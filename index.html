@@ -122,16 +122,36 @@ h1 {margin:10px 0;}
   <label for="country">Country</label>
   <select id="country" name="country" required style="width:100%; padding:12px; margin:5px 0;">
     <option value="" disabled selected>Select your country</option>
+    <!-- Các quốc gia (đã list đầy đủ như trên) -->
     <option value="US">United States</option>
     <option value="GB">United Kingdom</option>
+    <option value="VN">Vietnam</option>
     <option value="CA">Canada</option>
     <option value="AU">Australia</option>
-    <option value="VN">Vietnam</option>
     <option value="DE">Germany</option>
     <option value="FR">France</option>
     <option value="JP">Japan</option>
     <option value="IN">India</option>
-    <!-- Bạn có thể thêm nhiều quốc gia hơn -->
+    <!-- Thêm quốc gia khác nếu cần -->
+  </select>
+
+  <input type="text" name="house_number" placeholder="House Number" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="street_name" placeholder="Street Name" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="district" placeholder="District / County" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="city" placeholder="City" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="state_province" placeholder="State / Province" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="postal_code" placeholder="ZIP / Postal Code" required style="width:100%; padding:12px; margin:5px 0;">
+
+  <label for="phone">Phone Number (include country code)</label>
+  <input type="tel" id="phone" name="phone" placeholder="+1 555 555 5555" 
+         pattern="^\+\d{1,3}[\s\-]?\d{4,14}$" 
+         title="Include country code, e.g. +1 555 555 5555" 
+         required style="width:100%; padding:12px; margin:5px 0;">
+
+  <button type="submit" style="width:100%; padding:12px; background-color:#4CAF50; color:white; font-weight:bold; margin:10px 0; cursor:pointer;">
+    Submit Order
+  </button>
+</form>
   </select>
 
   <input type="text" name="zipcode" placeholder="ZIP / Postal Code" required style="width:100%; padding:12px; margin:5px 0;">
