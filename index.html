@@ -13,7 +13,6 @@ h1 {margin:10px 0;}
 .section {padding:20px;}
 .btn {background:#ff3d00; color:#fff; padding:18px; border:none; width:100%; font-size:18px; border-radius:40px; cursor:pointer;}
 .price {color:#d32f2f; font-size:26px; font-weight:bold;}
-.card {border:1px solid #eee; padding:15px; margin-bottom:15px; border-radius:12px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
 input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px; box-sizing:border-box;}
 
@@ -21,7 +20,7 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 #mediaSlider {position:relative; max-width:100%; margin-top:15px; border:1px solid #ddd; border-radius:12px; overflow:hidden; background:#000;}
 .slide {display:none; text-align:center;}
 .slide img {width:100%; height:100%; object-fit:contain; border-radius:12px;}
-.slide .video-container {position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden;} /* 16:9 ratio */
+.slide .video-container {position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden;} /* 16:9 */
 .slide iframe {position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
 #prevSlide, #nextSlide {position:absolute; top:50%; transform:translateY(-50%); font-size:30px; color:white; font-weight:bold; text-decoration:none; cursor:pointer; user-select:none; background:rgba(0,0,0,0.4); padding:5px 10px; border-radius:5px;}
 #prevSlide {left:10px;}
@@ -47,35 +46,42 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 
 <!-- Media Slider -->
 <div id="mediaSlider">
-  <!-- Slide 1: Image -->
+  <!-- Slide 1 -->
   <div class="slide">
-    <img src="https://via.placeholder.com/600x350.png?text=Mini+Pump+Image+1" alt="Image 1">
+    <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg" alt="Pump Image 1">
   </div>
-
-  <!-- Slide 2: YouTube Shorts -->
+  <!-- Slide 2 -->
+  <div class="slide">
+    <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg" alt="Pump Image 2">
+  </div>
+  <!-- Slide 3 -->
+  <div class="slide">
+    <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg" alt="Pump Image 3">
+  </div>
+  <!-- Slide 4 -->
+  <div class="slide">
+    <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/c2e43ddc6d565ef048555b2bf89fe05236131707/ca0d3d038f943eca67852.jpg" alt="Pump Image 4">
+  </div>
+  <!-- Slide 5: YouTube Shorts -->
   <div class="slide">
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/RWg9nFETMvY?rel=0" 
-              title="Mini Pump Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      <iframe src="https://www.youtube.com/embed/QwbNfdYCYZ4?rel=0" 
+              title="Product Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe>
     </div>
   </div>
 
-  <!-- Slide 3: Image -->
-  <div class="slide">
-    <img src="https://via.placeholder.com/600x350.png?text=Mini+Pump+Image+2" alt="Image 2">
-  </div>
-
-  <!-- Navigation Arrows -->
   <a id="prevSlide">&#10094;</a>
   <a id="nextSlide">&#10095;</a>
 </div>
 
 <!-- Thumbnails -->
 <div id="thumbnails">
-  <img src="https://via.placeholder.com/600x350.png?text=Mini+Pump+Image+1" data-index="0" class="active">
-  <img src="https://img.youtube.com/vi/RWg9nFETMvY/hqdefault.jpg" data-index="1">
-  <img src="https://https://scontent.fhan15-1.fna.fbcdn.net/v/t1.15752-9/648154998_1834966130540929_2229036652061499005_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=cyJ_xrqFsxIQ7kNvwFE-7RN&_nc_oc=Adre21oiXxDTf6TENOsZ9my_r4VCIsJUxPMeSqWbvmTe1h1vzogBlfR5A36OQVZBkrY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_ss=7a32e&oh=03_Q7cD5AF1RSwjJg-Dk-O_nZvinjRs2WlVyYjllNqGCii8hP7KRg&oe=69FC0030" data-index="2">
+  <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg" data-index="0" class="active">
+  <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg" data-index="1">
+  <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg" data-index="2">
+  <img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/c2e43ddc6d565ef048555b2bf89fe05236131707/ca0d3d038f943eca67852.jpg" data-index="3">
+  <img src="https://img.youtube.com/vi/QwbNfdYCYZ4/hqdefault.jpg" data-index="4">
 </div>
 
 </div>
@@ -83,7 +89,6 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 <!-- Chọn gói sản phẩm và quy đổi tiền tệ -->
 <div class="section">
 <h2>💰 CHOOSE YOUR PACKAGE</h2>
-
 <form id="orderForm">
   <select id="package" name="package" required>
     <option value="50">1 Unit - $50</option>
@@ -104,18 +109,15 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 
   <input type="hidden" id="final_price" name="final_price" value="50">
   <input type="hidden" id="final_currency" name="final_currency" value="USD">
-
   <button type="submit" class="btn">🔥 PLACE ORDER NOW</button>
 </form>
 </div>
 
-<!-- Thông tin đặt hàng -->
+<!-- ORDER DETAILS -->
 <div class="section">
 <h2>📦 ORDER DETAILS</h2>
-
 <form>
   <input type="text" name="fullname" placeholder="Full Name" required>
-
   <label for="phone_country_code">Country Code</label>
   <select id="phone_country_code" name="phone_country_code" required style="width:30%; display:inline-block;">
     <option value="" disabled selected>+Code</option>
@@ -127,13 +129,7 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
     <option value="+81">+81 (Japan)</option>
     <option value="+91">+91 (India)</option>
   </select>
-
-  <input type="tel" id="phone" name="phone" placeholder="Phone Number" 
-         pattern="^\d{4,14}$" 
-         title="Enter phone number without country code, 4 to 14 digits" 
-         required 
-         style="width:65%; display:inline-block; vertical-align:top;">
-
+  <input type="tel" name="phone" placeholder="Phone Number" pattern="^\d{4,14}$" required style="width:65%; display:inline-block; vertical-align:top;">
   <input type="text" name="house_number" placeholder="House Number" required>
   <input type="text" name="street_name" placeholder="Street Name" required>
   <input type="text" name="city" placeholder="City" required>
@@ -150,9 +146,9 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 </div>
 
 <script>
-// Tỷ giá cơ bản
-const exchangeRates = { USD: 1, EUR: 0.92, VND: 24000, JPY: 150, INR: 83 };
-const currencySymbols = { USD: '$', EUR: '€', VND: '₫', JPY: '¥', INR: '₹' };
+// Price & Currency
+const exchangeRates = { USD:1, EUR:0.92, VND:24000, JPY:150, INR:83 };
+const currencySymbols = { USD:'$', EUR:'€', VND:'₫', JPY:'¥', INR:'₹' };
 const packageSelect = document.getElementById('package');
 const countrySelect = document.getElementById('currency_country');
 const priceDisplay = document.getElementById('converted_price');
@@ -163,7 +159,7 @@ function updatePrice() {
   const usdPrice = parseFloat(packageSelect.value);
   const selectedCurrency = countrySelect.value;
   const convertedPrice = usdPrice * exchangeRates[selectedCurrency];
-  priceDisplay.textContent = selectedCurrency === "VND" ? 
+  priceDisplay.textContent = selectedCurrency === "VND" ?
     currencySymbols[selectedCurrency] + convertedPrice.toLocaleString() :
     currencySymbols[selectedCurrency] + convertedPrice.toFixed(2);
   finalPriceInput.value = convertedPrice.toFixed(2);
@@ -174,12 +170,7 @@ packageSelect.addEventListener('change', updatePrice);
 countrySelect.addEventListener('change', updatePrice);
 updatePrice();
 
-document.getElementById('orderForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert("Order submitted!\nPrice: " + finalPriceInput.value + " " + finalCurrencyInput.value);
-});
-
-// Slider logic
+// Slider
 let currentSlide = 0;
 const slides = document.querySelectorAll("#mediaSlider .slide");
 const totalSlides = slides.length;
@@ -209,5 +200,6 @@ thumbnails.forEach(thumb => {
 
 showSlide(currentSlide);
 </script>
+
 </body>
 </html>
