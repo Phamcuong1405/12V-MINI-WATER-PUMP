@@ -12,6 +12,7 @@ header {background:#d32f2f; color:#fff; text-align:center; padding:30px;}
 .section {padding:20px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
 input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px;}
+#countryCode{display:none;} /* 🔥 ẨN SELECT CŨ */
 
 .slider {position:relative; border-radius:12px; overflow:hidden; background:#000;}
 .slide {display:none;}
@@ -39,10 +40,9 @@ cursor:pointer;
 }
 </style>
 
-<!-- ✅ SELECT2 -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- 🔥 INTL TEL INPUT (PRO MAX) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
 </head>
@@ -94,10 +94,12 @@ cursor:pointer;
 
 <input name="fullname" placeholder="Full Name" required>
 
-<!-- ✅ SELECT2 -->
-<select name="phone_country_code" id="countryCode" required></select>
+<!-- ❌ SELECT CŨ (GIỮ NHƯNG ẨN) -->
+<select name="phone_country_code" id="countryCode"></select>
 
-<input name="phone" placeholder="Phone" required>
+<!-- ✅ INPUT PRO MAX -->
+<input id="phone" name="phone" type="tel" placeholder="Phone" required>
+
 <input name="house_number" placeholder="House Number" required>
 <input name="street_name" placeholder="Street" required>
 <input name="city" placeholder="City" required>
@@ -145,31 +147,88 @@ function scrollToForm(){
  document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
 }
 
-// country list
-const countryCodes=[
-{ name:"Vietnam",code:"+84"},
-{ name:"USA",code:"+1"},
-{ name:"UK",code:"+44"},
-{ name:"Japan",code:"+81"},
-{ name:"Korea",code:"+82"},
-{ name:"China",code:"+86"}
-];
+// giá
+const rates={USD:1,VND:24000};
+function formatVND(num){
+ return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")+"₫";
+}
+function updatePrice(){
+ let p=document.getElementById("package").value;
+ let c=document.getElementById("currency_country").value;
+ let v=p*rates[c];
+ document.getElementById("converted_price").innerText=
+  c==="VND"?formatVND(v):"$"+v;
+ document.getElementById("final_price").value=p;
+ document.getElementById("final_currency").value=c;
+}
+document.getElementById("package").onchange=updatePrice;
+document.getElementById("currency_country").onchange=updatePrice;
+updatePrice();
 
-const select=document.getElementById("countryCode");
-countryCodes.forEach(c=>{
- let op=document.createElement("option");
- op.value=c.code;
- op.textContent=`${c.name} (${c.code})`;
- select.appendChild(op);
+// validate
+const form=document.getElementById("orderForm");
+const paypalBox=document.getElementById("paypal-button-container");
+const notice=document.getElementById("paypalNotice");
+
+function checkForm(){
+ let valid=true;
+ form.querySelectorAll("[required]").forEach(i=>{
+   if(!i.value) valid=false;
+ });
+ paypalBox.style.display=valid?"block":"none";
+ notice.style.display=valid?"none":"block";
+}
+form.oninput=checkForm;
+form.onchange=checkForm;
+
+// 🔥 PRO MAX PHONE
+const input = document.querySelector("#phone");
+
+const iti = window.intlTelInput(input, {
+  initialCountry: "auto",
+  geoIpLookup: function(callback) {
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => callback(data.country_code))
+      .catch(() => callback("VN"));
+  },
+  separateDialCode: true,
+  preferredCountries: ["vn","us","jp","kr"],
+  utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/utils.js"
 });
 
-// ✅ SELECT2 ACTIVE
-$(document).ready(function() {
-  $('#countryCode').select2({
-    placeholder: "Select country code",
-    width: '100%'
-  });
+// đồng bộ code cũ
+form.addEventListener("input", ()=>{
+ document.getElementById("countryCode").value =
+   "+" + iti.getSelectedCountryData().dialCode;
 });
+
+// PAYPAL
+paypal.Buttons({
+createOrder:(d,a)=>{
+ let price=document.getElementById("final_price").value;
+ return a.order.create({purchase_units:[{amount:{value:price}}]});
+},
+onApprove:(d,a)=>{
+ return a.order.capture().then(()=>{
+   document.getElementById("formStatus").innerHTML="✅ Payment success";
+
+   fetch("https://script.google.com/macros/s/AKfycbyACvyly4lQKYAUeCjkQ85i05nZJsICPF-HEYAUhxLaXyF9CTQmYI0EGJG0r8whMsY/exec",{
+     method:"POST",
+     body:JSON.stringify({
+       name: form.fullname.value,
+       phone: iti.getNumber(), // 🔥 chuẩn quốc tế
+       address: form.house_number.value + ", " + form.street_name.value + ", " + form.city.value + ", " + form.state_province.value,
+       zip: form.postal_code.value,
+       package: document.getElementById("package").value,
+       currency: document.getElementById("currency_country").value
+     })
+   });
+
+ });
+}
+}).render('#paypal-button-container');
+
 </script>
 
 </body>
