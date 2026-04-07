@@ -28,6 +28,19 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 
 .section h3 {margin-bottom:10px; color:#d32f2f;}
 .section p {line-height:1.6;}
+
+.order-btn{
+background:#ff5722;
+color:#fff;
+font-size:18px;
+font-weight:bold;
+padding:15px;
+border:none;
+border-radius:12px;
+width:100%;
+margin-bottom:15px;
+cursor:pointer;
+}
 </style>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
@@ -94,32 +107,16 @@ Suitable for agriculture, washing, irrigation, and home use.
 
 <!-- FORM -->
 <div class="section">
-<form id="orderForm">
 
-<!-- 🔥 NÚT ĐẶT HÀNG NGAY -->
-<button type="button" onclick="scrollToForm()" style="
-width:100%;
-background:#ff5722;
-color:#fff;
-padding:15px;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-margin-bottom:10px;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
-">
-🔥 ĐẶT HÀNG NGAY
-</button>
+<button class="order-btn" onclick="scrollToForm()">🔥 ORDER NOW</button>
+
+<form id="orderForm">
 
 <input name="fullname" placeholder="Full Name" required>
 
-<select name="phone_country_code" required>
-<option value="">+Code</option>
-<option value="+84">Vietnam</option>
-<option value="+1">USA</option>
-</select>
+<input id="searchCode" placeholder="Search country code...">
+
+<select name="phone_country_code" id="countryCode" required></select>
 
 <input name="phone" placeholder="Phone" required>
 <input name="house_number" placeholder="House Number" required>
@@ -153,14 +150,13 @@ box-shadow:0 4px 10px rgba(0,0,0,0.2);
 
 <!-- CONTACT -->
 <div class="section" style="background:#f9f9f9;">
-<h3>📍 Contact Information</h3>
-<p><strong>Country:</strong> Vietnam</p>
-<p><strong>WhatsApp:</strong> 0867050558</p>
+<h3>📍 Contact</h3>
+<p>Country: Vietnam</p>
+<p>WhatsApp: 0867050558</p>
 </div>
 
 </div>
 
-<!-- WhatsApp Button -->
 <a href="https://wa.me/84867050558" target="_blank" style="
 position:fixed;
 bottom:20px;
@@ -173,20 +169,9 @@ font-weight:bold;
 text-decoration:none;
 box-shadow:0 4px 10px rgba(0,0,0,0.3);
 z-index:999;
-">
-💬 Chat
-</a>
+">💬</a>
 
 <script>
-// 🔥 SCROLL FORM
-function scrollToForm(){
-  const form = document.getElementById("orderForm");
-  form.scrollIntoView({behavior:"smooth"});
-  form.style.boxShadow = "0 0 15px red";
-  form.fullname.focus();
-  setTimeout(()=>{form.style.boxShadow="none";},2000);
-}
-
 // Slider
 let slideIndex = {video:0,image:0};
 function moveSlide(type,n){
@@ -197,7 +182,12 @@ function moveSlide(type,n){
 moveSlide('video',0);
 moveSlide('image',0);
 
-// Format VND
+// Scroll
+function scrollToForm(){
+ document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
+}
+
+// format VND
 function formatVND(num){
  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "₫";
 }
@@ -209,8 +199,11 @@ function updatePrice(){
  let c=document.getElementById("currency_country").value;
  let v=p*rates[c];
 
- document.getElementById("converted_price").innerText=
- c==="VND"?formatVND(v):"$"+v;
+ if(c==="VND"){
+   document.getElementById("converted_price").innerText=formatVND(v);
+ }else{
+   document.getElementById("converted_price").innerText="$"+v;
+ }
 
  document.getElementById("final_price").value=p;
  document.getElementById("final_currency").value=c;
@@ -219,7 +212,7 @@ document.getElementById("package").onchange=updatePrice;
 document.getElementById("currency_country").onchange=updatePrice;
 updatePrice();
 
-// Validate form
+// Validate
 const form=document.getElementById("orderForm");
 const paypalBox=document.getElementById("paypal-button-container");
 const notice=document.getElementById("paypalNotice");
@@ -235,7 +228,32 @@ function checkForm(){
 form.oninput=checkForm;
 form.onchange=checkForm;
 
-// PayPal + gửi full data
+// Country code
+const countryCodes = [
+{ name:"Vietnam",code:"+84"},
+{ name:"USA",code:"+1"},
+{ name:"UK",code:"+44"},
+{ name:"Japan",code:"+81"},
+{ name:"Korea",code:"+82"},
+{ name:"China",code:"+86"}
+];
+
+const select=document.getElementById("countryCode");
+countryCodes.forEach(c=>{
+ let op=document.createElement("option");
+ op.value=c.code;
+ op.textContent=`${c.name} (${c.code})`;
+ select.appendChild(op);
+});
+
+document.getElementById("searchCode").addEventListener("input",function(){
+ let k=this.value.toLowerCase();
+ document.querySelectorAll("#countryCode option").forEach(o=>{
+   o.style.display=o.textContent.toLowerCase().includes(k)?"":"none";
+ });
+});
+
+// PayPal
 paypal.Buttons({
 createOrder:(d,a)=>{
  let price=document.getElementById("final_price").value;
