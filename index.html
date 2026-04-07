@@ -11,10 +11,11 @@ body {font-family: Arial; margin:0; background:#f5f5f5;}
 header {background:#d32f2f; color:#fff; text-align:center; padding:30px;}
 h1 {margin:10px 0;}
 .section {padding:20px;}
-.btn {background:#ff3d00; color:#fff; padding:18px; border:none; width:100%; font-size:18px; border-radius:40px;}
+.btn {background:#ff3d00; color:#fff; padding:18px; border:none; width:100%; font-size:18px; border-radius:40px; cursor:pointer;}
 .price {color:#d32f2f; font-size:26px; font-weight:bold;}
 .card {border:1px solid #eee; padding:15px; margin-bottom:15px; border-radius:12px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
+input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px; box-sizing:border-box;}
 </style>
 </head>
 
@@ -32,97 +33,30 @@ h1 {margin:10px 0;}
 <p style="color:#2e7d32; font-weight:bold;">✔ 8,980+ sold this month</p>
 </div>
 
+<!-- Chọn gói sản phẩm -->
 <div class="section">
-<h2>💥 WHY PEOPLE LOVE IT</h2>
-<ul>
-<li>✔ Strong pressure up to 200 PSI</li>
-<li>✔ Compact but extremely powerful</li>
-<li>✔ Works with car battery (12V)</li>
-<li>✔ Easy installation in minutes</li>
-<li>✔ Durable motor – long lifespan</li>
-</ul>
+<h2>💰 CHOOSE YOUR PACKAGE</h2>
+
+<select name="package" style="width:100%; padding:12px; margin:5px 0;">
+  <option value="1_unit">$50 - 1 Unit</option>
+  <option value="2_units">$99 - 2 Units (Free Shipping)</option>
+  <option value="3_units">$150 - 3 Units (Best Deal + Warranty)</option>
+</select>
+
+<button class="btn">🔥 PLACE ORDER NOW</button>
 </div>
 
+<!-- Thông tin đặt hàng -->
 <div class="section">
-<h2>🚀 PERFECT FOR</h2>
-<ul>
-<li>🚗 Car washing</li>
-<li>🌱 Garden watering</li>
-<li>🏠 Household use</li>
-<li>🐟 Aquarium & irrigation</li>
-</ul>
-</div>
-
-<div class="section">
-<h2>⚙️ SPECIFICATIONS</h2>
-<ul>
-<li>Voltage: 12V</li>
-<li>Power: 150W</li>
-<li>Pressure: up to 200 PSI</li>
-<li>Flow rate: 9.6 L/min</li>
-</ul>
-</div>
-
-<div class="section">
-<h2>💰 LIMITED TIME OFFER</h2>
-
-<div class="card">
-<h3>1 Unit</h3>
-<p class="price">$10</p>
-<p>Shipping: $2</p>
-</div>
-
-<div class="card">
-<h3>2 Units (BEST SELLER)</h3>
-<p class="price">$20</p>
-<p>FREE SHIPPING</p>
-</div>
-
-<div class="card">
-<h3>3 Units (BEST VALUE)</h3>
-<p class="price">$30</p>
-<p>FREE SHIPPING + WARRANTY</p>
-</div>
-
-</div>
-
-<div class="section">
-<h2>⭐ Customer Reviews</h2>
-
-<p style="color:#f57c00; font-weight:bold;">
-4.8/5 ⭐⭐⭐⭐⭐ (1,237 reviews)
-</p>
-
-<div class="card">
-<p>⭐⭐⭐⭐⭐ ✔ Verified Purchase</p>
-<p><strong>John Miller – USA</strong></p>
-<p>This pump is powerful and easy to use. Perfect for my car and garden.</p>
-</div>
-
-<div class="card">
-<p>⭐⭐⭐⭐⭐ ✔ Verified Purchase</p>
-<p><strong>Sarah Williams – UK</strong></p>
-<p>Compact, efficient, and reliable. Totally worth it!</p>
-</div>
-
-<div class="card">
-<p>⭐⭐⭐⭐⭐ ✔ Verified Purchase</p>
-<p><strong>David Brown – Canada</strong></p>
-<p>Great pressure and stable performance. Highly recommend.</p>
-</div>
-
-</div>
-
-<div class="section">
-<h2>📦 ORDER NOW</h2>
+<h2>📦 ORDER DETAILS</h2>
 
 <form>
   <!-- Tên người nhận -->
-  <input type="text" name="fullname" placeholder="Full Name" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="fullname" placeholder="Full Name" required>
 
   <!-- Số điện thoại gồm chọn mã quốc gia + nhập số điện thoại -->
   <label for="phone_country_code">Country Code</label>
-  <select id="phone_country_code" name="phone_country_code" required style="width:30%; padding:12px; margin:5px 0; display:inline-block;">
+  <select id="phone_country_code" name="phone_country_code" required style="width:30%; display:inline-block;">
     <option value="" disabled selected>+Code</option>
     <option value="+1">+1 (USA/Canada)</option>
     <option value="+44">+44 (UK)</option>
@@ -131,68 +65,34 @@ h1 {margin:10px 0;}
     <option value="+33">+33 (France)</option>
     <option value="+81">+81 (Japan)</option>
     <option value="+91">+91 (India)</option>
-    <!-- Thêm mã quốc gia khác nếu cần -->
   </select>
-  
+
   <input type="tel" id="phone" name="phone" placeholder="Phone Number" 
          pattern="^\d{4,14}$" 
          title="Enter phone number without country code, 4 to 14 digits" 
          required 
-         style="width:65%; padding:12px; margin:5px 0; display:inline-block; vertical-align:top;">
+         style="width:65%; display:inline-block; vertical-align:top;">
 
   <!-- Số nhà -->
-  <input type="text" name="house_number" placeholder="House Number" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="house_number" placeholder="House Number" required>
 
   <!-- Đường -->
-  <input type="text" name="street_name" placeholder="Street Name" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="street_name" placeholder="Street Name" required>
 
   <!-- Tỉnh / Thành phố -->
-  <input type="text" name="city" placeholder="City" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="city" placeholder="City" required>
 
   <!-- Tiểu bang -->
-  <input type="text" name="state_province" placeholder="State / Province" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="state_province" placeholder="State / Province" required>
 
   <!-- Zipcode -->
-  <input type="text" name="postal_code" placeholder="ZIP / Postal Code" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="postal_code" placeholder="ZIP / Postal Code" required>
 
   <!-- Nút gửi -->
-  <button type="submit" style="width:100%; padding:12px; background-color:#4CAF50; color:white; font-weight:bold; margin:10px 0; cursor:pointer;">
+  <button type="submit" style="background-color:#4CAF50; color:white; font-weight:bold; margin:10px 0; width:100%; padding:12px; cursor:pointer;">
     Submit Order
   </button>
 </form>
-  </select>
-
-  <input type="text" name="house_number" placeholder="House Number" required style="width:100%; padding:12px; margin:5px 0;">
-  <input type="text" name="street_name" placeholder="Street Name" required style="width:100%; padding:12px; margin:5px 0;">
-  <input type="text" name="district" placeholder="District / County" required style="width:100%; padding:12px; margin:5px 0;">
-  <input type="text" name="city" placeholder="City" required style="width:100%; padding:12px; margin:5px 0;">
-  <input type="text" name="state_province" placeholder="State / Province" required style="width:100%; padding:12px; margin:5px 0;">
-  <input type="text" name="postal_code" placeholder="ZIP / Postal Code" required style="width:100%; padding:12px; margin:5px 0;">
-  
-  <input type="text" name="zipcode" placeholder="ZIP / Postal Code" required style="width:100%; padding:12px; margin:5px 0;">
-
-  <input type="text" name="address" placeholder="Street Address, City, State/Province" required style="width:100%; padding:12px; margin:5px 0;">
-
-  <label for="phone">Phone Number (include country code)</label>
-  <input type="tel" id="phone" name="phone" placeholder="+1 555 555 5555" pattern="^\+\d{1,3}\s?\d{4,14}(?:x.+)?$" title="Include country code, e.g. +1 555 555 5555" required style="width:100%; padding:12px; margin:5px 0;">
-
-  <button type="submit" style="width:100%; padding:12px; background-color:#4CAF50; color:white; font-weight:bold; margin:10px 0; cursor:pointer;">
-    Submit Order
-  </button>
-</form>
-<select style="width:100%; padding:12px; margin:5px 0;">
-<option>1 Unit - $50</option>
-<option>2 Units - $99 (Free Shipping)</option>
-<option>3 Units - $150 (Best Deal)</option>
-</select>
-
-<button class="btn">🔥 PLACE ORDER NOW</button>
-</form>
-
-<p style="text-align:center; font-size:14px;">
-🔒 Secure Payment | 🚚 Fast Shipping | 💯 Money-back Guarantee
-</p>
-
 </div>
 
 <div class="section" style="background:#333; color:#fff;">
