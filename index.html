@@ -13,7 +13,6 @@ header {background:#d32f2f; color:#fff; text-align:center; padding:30px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
 input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px;}
 
-/* Slider */
 .slider {position:relative; border-radius:12px; overflow:hidden; background:#000;}
 .slide {display:none;}
 .slide img {width:100%; height:100%; object-fit:contain;}
@@ -25,9 +24,6 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
  background:rgba(0,0,0,0.4); padding:5px 10px;
 }
 .prev {left:10px;} .next {right:10px;}
-
-.section h3 {margin-bottom:10px; color:#d32f2f;}
-.section p {line-height:1.6;}
 
 .order-btn{
 background:#ff5722;
@@ -42,6 +38,11 @@ margin-bottom:15px;
 cursor:pointer;
 }
 </style>
+
+<!-- ✅ SELECT2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
 </head>
@@ -84,38 +85,16 @@ cursor:pointer;
 </div>
 </div>
 
-<!-- PRODUCT INFO -->
-<div class="section">
-<h3>📦 Product Information</h3>
-<p>
-This 12V high pressure mini pump is designed for powerful water transfer and spraying.
-Compact size makes it easy to carry and install anywhere.
-Suitable for agriculture, washing, irrigation, and home use.
-</p>
-</div>
-
-<!-- SPECIFICATIONS -->
-<div class="section">
-<h3>⚙️ Specifications & Uses</h3>
-<p>✅ Suction depth: 10 meters</p>
-<p>✅ Vertical lift: 5 meters</p>
-<p>✅ Horizontal discharge: 70 meters</p>
-<p>✅ Voltage: 12V</p>
-<p>✅ Power: 150W</p>
-<p>✅ Water flow: 6–7 m³/h</p>
-</div>
-
 <!-- FORM -->
 <div class="section">
 
-<button class="order-btn" onclick="scrollToForm()">🔥 ORDER NOW</button>
+<button class="order-btn" onclick="scrollToForm()">🔥 ĐẶT HÀNG NGAY</button>
 
 <form id="orderForm">
 
 <input name="fullname" placeholder="Full Name" required>
 
-<input id="searchCode" placeholder="Search country code...">
-
+<!-- ✅ SELECT2 -->
 <select name="phone_country_code" id="countryCode" required></select>
 
 <input name="phone" placeholder="Phone" required>
@@ -148,88 +127,26 @@ Suitable for agriculture, washing, irrigation, and home use.
 <div id="paypal-button-container" style="display:none;"></div>
 </div>
 
-<!-- CONTACT -->
-<div class="section" style="background:#f9f9f9;">
-<h3>📍 Contact</h3>
-<p>Country: Vietnam</p>
-<p>WhatsApp: 0867050558</p>
 </div>
-
-</div>
-
-<a href="https://wa.me/84867050558" target="_blank" style="
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:15px 18px;
-border-radius:50px;
-font-weight:bold;
-text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
-z-index:999;
-">💬</a>
 
 <script>
-// Slider
-let slideIndex = {video:0,image:0};
+// slider
+let slideIndex={video:0,image:0};
 function moveSlide(type,n){
- let slides=document.querySelectorAll(`#${type}Slider .slide`);
- slideIndex[type]=(slideIndex[type]+n+slides.length)%slides.length;
- slides.forEach((s,i)=>s.style.display=i===slideIndex[type]?"block":"none");
+ let s=document.querySelectorAll(`#${type}Slider .slide`);
+ slideIndex[type]=(slideIndex[type]+n+s.length)%s.length;
+ s.forEach((e,i)=>e.style.display=i===slideIndex[type]?"block":"none");
 }
 moveSlide('video',0);
 moveSlide('image',0);
 
-// Scroll
+// scroll
 function scrollToForm(){
  document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
 }
 
-// format VND
-function formatVND(num){
- return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "₫";
-}
-
-// Currency
-const rates={USD:1,VND:24000};
-function updatePrice(){
- let p=document.getElementById("package").value;
- let c=document.getElementById("currency_country").value;
- let v=p*rates[c];
-
- if(c==="VND"){
-   document.getElementById("converted_price").innerText=formatVND(v);
- }else{
-   document.getElementById("converted_price").innerText="$"+v;
- }
-
- document.getElementById("final_price").value=p;
- document.getElementById("final_currency").value=c;
-}
-document.getElementById("package").onchange=updatePrice;
-document.getElementById("currency_country").onchange=updatePrice;
-updatePrice();
-
-// Validate
-const form=document.getElementById("orderForm");
-const paypalBox=document.getElementById("paypal-button-container");
-const notice=document.getElementById("paypalNotice");
-
-function checkForm(){
- let valid=true;
- form.querySelectorAll("[required]").forEach(i=>{
-   if(!i.value) valid=false;
- });
- paypalBox.style.display=valid?"block":"none";
- notice.style.display=valid?"none":"block";
-}
-form.oninput=checkForm;
-form.onchange=checkForm;
-
-// Country code
-const countryCodes = [
+// country list
+const countryCodes=[
 { name:"Vietnam",code:"+84"},
 { name:"USA",code:"+1"},
 { name:"UK",code:"+44"},
@@ -246,38 +163,13 @@ countryCodes.forEach(c=>{
  select.appendChild(op);
 });
 
-document.getElementById("searchCode").addEventListener("input",function(){
- let k=this.value.toLowerCase();
- document.querySelectorAll("#countryCode option").forEach(o=>{
-   o.style.display=o.textContent.toLowerCase().includes(k)?"":"none";
- });
+// ✅ SELECT2 ACTIVE
+$(document).ready(function() {
+  $('#countryCode').select2({
+    placeholder: "Select country code",
+    width: '100%'
+  });
 });
-
-// PayPal
-paypal.Buttons({
-createOrder:(d,a)=>{
- let price=document.getElementById("final_price").value;
- return a.order.create({purchase_units:[{amount:{value:price}}]});
-},
-onApprove:(d,a)=>{
- return a.order.capture().then(()=>{
-   document.getElementById("formStatus").innerHTML="✅ Payment success";
-
-   fetch("https://script.google.com/macros/s/AKfycbyACvyly4lQKYAUeCjkQ85i05nZJsICPF-HEYAUhxLaXyF9CTQmYI0EGJG0r8whMsY/exec",{
-     method:"POST",
-     body:JSON.stringify({
-       name: form.fullname.value,
-       phone: form.phone_country_code.value + form.phone.value,
-       address: form.house_number.value + ", " + form.street_name.value + ", " + form.city.value + ", " + form.state_province.value,
-       zip: form.postal_code.value,
-       package: document.getElementById("package").value,
-       currency: document.getElementById("currency_country").value
-     })
-   });
-
- });
-}
-}).render('#paypal-button-container');
 </script>
 
 </body>
