@@ -96,6 +96,23 @@ Suitable for agriculture, washing, irrigation, and home use.
 <div class="section">
 <form id="orderForm">
 
+<!-- 🔥 NÚT ĐẶT HÀNG NGAY -->
+<button type="button" onclick="scrollToForm()" style="
+width:100%;
+background:#ff5722;
+color:#fff;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+margin-bottom:10px;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+">
+🔥 ĐẶT HÀNG NGAY
+</button>
+
 <input name="fullname" placeholder="Full Name" required>
 
 <select name="phone_country_code" required>
@@ -136,9 +153,9 @@ Suitable for agriculture, washing, irrigation, and home use.
 
 <!-- CONTACT -->
 <div class="section" style="background:#f9f9f9;">
-<h3>📍 Contact</h3>
-<p>Country: Vietnam</p>
-<p>WhatsApp: 0867050558</p>
+<h3>📍 Contact Information</h3>
+<p><strong>Country:</strong> Vietnam</p>
+<p><strong>WhatsApp:</strong> 0867050558</p>
 </div>
 
 </div>
@@ -157,10 +174,19 @@ text-decoration:none;
 box-shadow:0 4px 10px rgba(0,0,0,0.3);
 z-index:999;
 ">
-💬
+💬 Chat
 </a>
 
 <script>
+// 🔥 SCROLL FORM
+function scrollToForm(){
+  const form = document.getElementById("orderForm");
+  form.scrollIntoView({behavior:"smooth"});
+  form.style.boxShadow = "0 0 15px red";
+  form.fullname.focus();
+  setTimeout(()=>{form.style.boxShadow="none";},2000);
+}
+
 // Slider
 let slideIndex = {video:0,image:0};
 function moveSlide(type,n){
@@ -171,7 +197,7 @@ function moveSlide(type,n){
 moveSlide('video',0);
 moveSlide('image',0);
 
-// format VND
+// Format VND
 function formatVND(num){
  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "₫";
 }
@@ -183,11 +209,8 @@ function updatePrice(){
  let c=document.getElementById("currency_country").value;
  let v=p*rates[c];
 
- if(c==="VND"){
-   document.getElementById("converted_price").innerText=formatVND(v);
- }else{
-   document.getElementById("converted_price").innerText="$"+v;
- }
+ document.getElementById("converted_price").innerText=
+ c==="VND"?formatVND(v):"$"+v;
 
  document.getElementById("final_price").value=p;
  document.getElementById("final_currency").value=c;
@@ -196,7 +219,7 @@ document.getElementById("package").onchange=updatePrice;
 document.getElementById("currency_country").onchange=updatePrice;
 updatePrice();
 
-// Validate
+// Validate form
 const form=document.getElementById("orderForm");
 const paypalBox=document.getElementById("paypal-button-container");
 const notice=document.getElementById("paypalNotice");
