@@ -12,19 +12,19 @@ header {background:#d32f2f; color:#fff; text-align:center; padding:30px;}
 .section {padding:20px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
 input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px;}
-#countryCode{display:none;} /* 🔥 ẨN SELECT CŨ */
+#countryCode{display:none;}
 
 .slider {position:relative; border-radius:12px; overflow:hidden; background:#000;}
 .slide {display:none;}
 .slide img {width:100%; height:100%; object-fit:contain;}
 .video-container {position:relative; padding-top:56.25%;}
 .video-container iframe {position:absolute; width:100%; height:100%; top:0; left:0;}
-.prev, .next {
+.prev,.next{
  position:absolute; top:50%; transform:translateY(-50%);
  color:#fff; font-size:30px; cursor:pointer;
  background:rgba(0,0,0,0.4); padding:5px 10px;
 }
-.prev {left:10px;} .next {right:10px;}
+.prev{left:10px;} .next{right:10px;}
 
 .order-btn{
 background:#ff5722;
@@ -40,7 +40,6 @@ cursor:pointer;
 }
 </style>
 
-<!-- 🔥 INTL TEL INPUT (PRO MAX) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
 
@@ -61,7 +60,6 @@ cursor:pointer;
 <p style="color:green;">✔ 8,980+ sold this month</p>
 </div>
 
-<!-- VIDEO -->
 <div class="section">
 <h3>🎥 Videos</h3>
 <div class="slider" id="videoSlider">
@@ -72,7 +70,6 @@ cursor:pointer;
 </div>
 </div>
 
-<!-- IMAGES -->
 <div class="section">
 <h3>📸 Images</h3>
 <div class="slider" id="imageSlider">
@@ -85,19 +82,12 @@ cursor:pointer;
 </div>
 </div>
 
-<!-- FORM -->
 <div class="section">
-
 <button class="order-btn" onclick="scrollToForm()">🔥 ĐẶT HÀNG NGAY</button>
 
 <form id="orderForm">
-
 <input name="fullname" placeholder="Full Name" required>
-
-<!-- ❌ SELECT CŨ (GIỮ NHƯNG ẨN) -->
 <select name="phone_country_code" id="countryCode"></select>
-
-<!-- ✅ INPUT PRO MAX -->
 <input id="phone" name="phone" type="tel" placeholder="Phone" required>
 
 <input name="house_number" placeholder="House Number" required>
@@ -111,18 +101,12 @@ cursor:pointer;
 <option value="99">2 Units - $99</option>
 </select>
 
-<select id="currency_country">
-<option value="USD">USD</option>
-<option value="VND">VND</option>
-</select>
-
-<p>Price: <span id="converted_price">$50</span></p>
+<p id="priceBox">Price: <span id="converted_price">$50</span></p>
 
 <input type="hidden" id="final_price">
 <input type="hidden" id="final_currency">
 
 <p id="formStatus"></p>
-
 </form>
 
 <p id="paypalNotice" style="color:red;">⚠ Fill all info before payment</p>
@@ -147,23 +131,57 @@ function scrollToForm(){
  document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
 }
 
-// giá
-const rates={USD:1,VND:24000};
-function formatVND(num){
- return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")+"₫";
+// ===== PRO MAX PRICE SYSTEM =====
+let exchangeRates={}, userCurrency="USD", userCountry="US";
+
+const flags={VN:"🇻🇳",US:"🇺🇸",JP:"🇯🇵",KR:"🇰🇷",GB:"🇬🇧"};
+
+function getAdjustedPrice(base){
+ if(userCountry==="US") return base*1.2;
+ if(userCountry==="JP") return base*1.1;
+ return base;
 }
+
+function formatMoney(num,currency){
+ if(currency==="VND") return num.toLocaleString("vi-VN")+"₫";
+ return new Intl.NumberFormat(undefined,{style:'currency',currency}).format(num);
+}
+
+function loadUser(){
+ fetch("https://ipapi.co/json")
+ .then(r=>r.json())
+ .then(d=>{
+  userCurrency=d.currency||"USD";
+  userCountry=d.country_code||"US";
+  return fetch("https://api.exchangerate-api.com/v4/latest/USD");
+ })
+ .then(r=>r.json())
+ .then(d=>{
+  exchangeRates=d.rates;
+  updatePrice();
+ });
+}
+
+setInterval(loadUser,300000);
+loadUser();
+
 function updatePrice(){
- let p=document.getElementById("package").value;
- let c=document.getElementById("currency_country").value;
- let v=p*rates[c];
- document.getElementById("converted_price").innerText=
-  c==="VND"?formatVND(v):"$"+v;
- document.getElementById("final_price").value=p;
- document.getElementById("final_currency").value=c;
+ let base=parseFloat(document.getElementById("package").value);
+ let usd=getAdjustedPrice(base);
+
+ let rate=exchangeRates[userCurrency]||1;
+ let local=usd*rate;
+
+ let flag=flags[userCountry]||"🌍";
+
+ document.getElementById("converted_price").innerHTML=
+  flag+" $"+usd.toFixed(2)+" (~ "+formatMoney(local,userCurrency)+")";
+
+ document.getElementById("final_price").value=usd.toFixed(2);
+ document.getElementById("final_currency").value="USD";
 }
+
 document.getElementById("package").onchange=updatePrice;
-document.getElementById("currency_country").onchange=updatePrice;
-updatePrice();
 
 // validate
 const form=document.getElementById("orderForm");
@@ -179,35 +197,25 @@ function checkForm(){
  notice.style.display=valid?"none":"block";
 }
 form.oninput=checkForm;
-form.onchange=checkForm;
 
-// 🔥 PRO MAX PHONE
-const input = document.querySelector("#phone");
-
-const iti = window.intlTelInput(input, {
-  initialCountry: "auto",
-  geoIpLookup: function(callback) {
-    fetch("https://ipapi.co/json")
-      .then(res => res.json())
-      .then(data => callback(data.country_code))
-      .catch(() => callback("VN"));
-  },
-  separateDialCode: true,
-  preferredCountries: ["vn","us","jp","kr"],
-  utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/utils.js"
+// phone
+const iti=window.intlTelInput(document.querySelector("#phone"),{
+ initialCountry:"auto",
+ geoIpLookup:cb=>{
+  fetch("https://ipapi.co/json")
+  .then(r=>r.json())
+  .then(d=>cb(d.country_code))
+  .catch(()=>cb("VN"));
+ },
+ separateDialCode:true,
+ preferredCountries:["vn","us","jp"]
 });
 
-// đồng bộ code cũ
-form.addEventListener("input", ()=>{
- document.getElementById("countryCode").value =
-   "+" + iti.getSelectedCountryData().dialCode;
-});
-
-// PAYPAL
+// paypal
 paypal.Buttons({
 createOrder:(d,a)=>{
  let price=document.getElementById("final_price").value;
- return a.order.create({purchase_units:[{amount:{value:price}}]});
+ return a.order.create({purchase_units:[{amount:{value:price,currency_code:"USD"}}]});
 },
 onApprove:(d,a)=>{
  return a.order.capture().then(()=>{
@@ -217,11 +225,10 @@ onApprove:(d,a)=>{
      method:"POST",
      body:JSON.stringify({
        name: form.fullname.value,
-       phone: iti.getNumber(), // 🔥 chuẩn quốc tế
-       address: form.house_number.value + ", " + form.street_name.value + ", " + form.city.value + ", " + form.state_province.value,
+       phone: iti.getNumber(),
+       address: form.house_number.value + ", " + form.street_name.value + ", " + form.city.value,
        zip: form.postal_code.value,
-       package: document.getElementById("package").value,
-       currency: document.getElementById("currency_country").value
+       package: document.getElementById("package").value
      })
    });
 
