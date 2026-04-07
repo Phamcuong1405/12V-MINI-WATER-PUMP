@@ -13,12 +13,12 @@ header {background:#d32f2f; color:#fff; text-align:center; padding:30px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
 input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px;}
 
-/* Slider */
 .slider {position:relative; border-radius:12px; overflow:hidden; background:#000;}
 .slide {display:none;}
 .slide img {width:100%; height:100%; object-fit:contain;}
 .video-container {position:relative; padding-top:56.25%;}
 .video-container iframe {position:absolute; width:100%; height:100%; top:0; left:0;}
+
 .prev, .next {
  position:absolute; top:50%; transform:translateY(-50%);
  color:#fff; font-size:30px; cursor:pointer;
@@ -26,7 +26,6 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 }
 .prev {left:10px;} .next {right:10px;}
 
-/* Button CTA */
 .btn-order {
   width:100%;
   padding:15px;
@@ -37,12 +36,42 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
   border-radius:8px;
   margin-top:15px;
   cursor:pointer;
+  animation: pulse 1.5s infinite;
 }
-.btn-order:hover {opacity:0.9;}
 
-/* Extra */
-.section h3 {margin-bottom:10px; color:#d32f2f;}
-.section p {line-height:1.6;}
+@keyframes pulse {
+  0% {transform:scale(1);}
+  50% {transform:scale(1.05);}
+  100% {transform:scale(1);}
+}
+
+/* FLOAT BUTTON */
+.float-btn{
+ position:fixed;
+ bottom:20px;
+ left:50%;
+ transform:translateX(-50%);
+ width:90%;
+ max-width:500px;
+ background:#d32f2f;
+ color:#fff;
+ text-align:center;
+ padding:15px;
+ border-radius:10px;
+ font-size:18px;
+ z-index:999;
+ cursor:pointer;
+ animation:pulse 1.5s infinite;
+}
+
+/* FOMO */
+.fomo{
+ background:#fff3cd;
+ padding:10px;
+ text-align:center;
+ font-weight:bold;
+ color:#d32f2f;
+}
 </style>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
@@ -50,6 +79,13 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 </head>
 
 <body>
+
+<div class="fomo">
+🔥 <span id="viewing">18</span> người đang xem • Đã bán <span id="sold">8980</span>
+<br>
+⏳ Kết thúc ưu đãi sau: <span id="countdown">10:00</span>
+</div>
+
 <div class="container">
 
 <header>
@@ -60,59 +96,14 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 
 <div class="section">
 <p style="color:red;">⚠ Only 99 units left</p>
-<p style="color:green;">✔ 8,980+ sold this month</p>
 </div>
 
-<!-- VIDEO -->
+<!-- SPEC -->
 <div class="section">
-<h3>🎥 Videos</h3>
-<div class="slider" id="videoSlider">
-<div class="slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/QwbNfdYCYZ4"></iframe></div></div>
-<div class="slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/RWg9nFETMvY"></iframe></div></div>
-<span class="prev" onclick="moveSlide('video',-1)">❮</span>
-<span class="next" onclick="moveSlide('video',1)">❯</span>
-</div>
-</div>
+<h3>⚙️ Specifications</h3>
+<p>150W • 12V • High Pressure</p>
 
-<!-- IMAGES -->
-<div class="section">
-<h3>📸 Images</h3>
-<div class="slider" id="imageSlider">
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg"></div>
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg"></div>
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg"></div>
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/c2e43ddc6d565ef048555b2bf89fe05236131707/ca0d3d038f943eca67852.jpg"></div>
-<span class="prev" onclick="moveSlide('image',-1)">❮</span>
-<span class="next" onclick="moveSlide('image',1)">❯</span>
-</div>
-</div>
-
-<!-- PRODUCT INFO -->
-<div class="section">
-<h3>📦 Product Information</h3>
-<p>
-This 12V high pressure mini pump is designed for powerful water transfer and spraying.
-Compact size makes it easy to carry and install anywhere.
-Suitable for agriculture, washing, irrigation, and home use.
-</p>
-</div>
-
-<!-- SPECIFICATIONS -->
-<div class="section">
-<h3>⚙️ Specifications & Uses</h3>
-<p>✅ Suction depth: 10 meters</p>
-<p>✅ Vertical lift (with flexible hose): 5 meters</p>
-<p>✅ Horizontal discharge (with flexible hose): 70 meters</p>
-<p>✅ Voltage: 12V (15Ah or higher)</p>
-<p>✅ Power: 150W</p>
-<p>✅ Inlet: 27 mm, Outlet: 21 mm</p>
-<p>✅ Water flow rate: 6–7 cubic meters per hour</p>
-
-<!-- 🔥 NÚT ĐẶT HÀNG NGAY -->
-<button class="btn-order" onclick="scrollToOrder()">
-  ĐẶT HÀNG NGAY
-</button>
-
+<button class="btn-order" onclick="scrollToOrder()">ĐẶT HÀNG NGAY</button>
 </div>
 
 <!-- FORM -->
@@ -121,117 +112,119 @@ Suitable for agriculture, washing, irrigation, and home use.
 
 <input name="fullname" placeholder="Full Name" required>
 
-<select name="phone_country_code" required>
-<option value="">+Code</option>
-<option value="+84">Vietnam</option>
-<option value="+1">USA</option>
-<option value="+82">Korea</option>
-<option value="+81">Japan</option>
-<option value="+86">China</option>
-<option value="+65">Singapore</option>
+<select id="countryCode" required>
+<option value="+84">🇻🇳 +84</option>
+<option value="+1">🇺🇸 +1</option>
 </select>
 
 <input name="phone" placeholder="Phone" required>
-<input name="house_number" placeholder="House Number" required>
-<input name="street_name" placeholder="Street" required>
 <input name="city" placeholder="City" required>
-<input name="state_province" placeholder="State" required>
-<input name="postal_code" placeholder="ZIP" required>
 
 <select id="package">
-<option value="50">1 Unit - $50</option>
-<option value="99">2 Units - $99</option>
+<option value="50">1 Unit</option>
+<option value="99">2 Units</option>
 </select>
 
-<select id="currency_country">
+<select id="currency_country" style="display:none;">
 <option value="USD">USD</option>
 <option value="VND">VND</option>
 </select>
 
-<p>Price: <span id="converted_price">$50</span></p>
+<p>Price: <span id="converted_price">$49</span></p>
 
 <input type="hidden" id="final_price">
-<input type="hidden" id="final_currency">
 
-<p id="formStatus"></p>
+<button class="btn-order">Đặt hàng</button>
 
 </form>
 
-<p id="paypalNotice" style="color:red;">⚠ Fill all info before payment</p>
-<div id="paypal-button-container" style="display:none;"></div>
+<div id="paypal-button-container"></div>
 </div>
 
-<!-- CONTACT -->
-<div class="section" style="background:#f9f9f9;">
-<h3>📍 Contact Information</h3>
-<p><strong>Country:</strong> Vietnam</p>
-<p><strong>WhatsApp:</strong> 0867050558</p>
 </div>
 
+<!-- FLOAT BUTTON -->
+<div class="float-btn" onclick="scrollToOrder()">
+🔥 ĐẶT HÀNG NGAY
 </div>
 
 <script>
-// Scroll to form
-function scrollToOrder() {
-  document.getElementById("orderForm").scrollIntoView({
-    behavior: "smooth"
-  });
-}
 
-// Slider
-let slideIndex = {video:0,image:0};
-function moveSlide(type,n){
- let slides=document.querySelectorAll(`#${type}Slider .slide`);
- slideIndex[type]=(slideIndex[type]+n+slides.length)%slides.length;
- slides.forEach((s,i)=>s.style.display=i===slideIndex[type]?"block":"none");
-}
-moveSlide('video',0);
-moveSlide('image',0);
+// AUTO COUNTRY
+fetch("https://ipapi.co/json/")
+.then(res=>res.json())
+.then(data=>{
+ let map={
+  VN:{code:"+84",cur:"VND"},
+  US:{code:"+1",cur:"USD"}
+ };
+ let c=map[data.country_code];
+ if(c){
+  document.getElementById("countryCode").value=c.code;
+  document.getElementById("currency_country").value=c.cur;
+  updatePrice();
+ }
+});
 
-// Currency
+// PRICE
 const rates={USD:1,VND:24000};
+
+function optimizePrice(v,c){
+ if(c==="USD") return v==50?49:95;
+ if(c==="VND") return Math.round(v/1000)*1000-1000;
+ return v;
+}
+
 function updatePrice(){
  let p=document.getElementById("package").value;
  let c=document.getElementById("currency_country").value;
  let v=p*rates[c];
- document.getElementById("converted_price").innerText=c==="VND"?v.toLocaleString()+"₫":"$"+v;
+ v=optimizePrice(v,c);
+
+ document.getElementById("converted_price").innerText=
+ c==="VND"?v.toLocaleString()+"₫":"$"+v;
+
  document.getElementById("final_price").value=v;
- document.getElementById("final_currency").value=c;
 }
 document.getElementById("package").onchange=updatePrice;
-document.getElementById("currency_country").onchange=updatePrice;
 updatePrice();
 
-// Validate form
-const form=document.getElementById("orderForm");
-const paypalBox=document.getElementById("paypal-button-container");
-const notice=document.getElementById("paypalNotice");
-
-function checkForm(){
- let valid=true;
- form.querySelectorAll("[required]").forEach(i=>{
-   if(!i.value) valid=false;
- });
- paypalBox.style.display=valid?"block":"none";
- notice.style.display=valid?"none":"block";
+// SCROLL + FOCUS
+function scrollToOrder(){
+ document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
+ setTimeout(()=>document.querySelector('[name="fullname"]').focus(),500);
 }
-form.oninput=checkForm;
-form.onchange=checkForm;
 
-// PayPal
+// FOMO
+setInterval(()=>{
+ document.getElementById("viewing").innerText=
+ Math.floor(Math.random()*20)+10;
+},3000);
+
+setInterval(()=>{
+ let s=document.getElementById("sold");
+ s.innerText=parseInt(s.innerText)+1;
+},5000);
+
+// COUNTDOWN
+let time=600;
+setInterval(()=>{
+ let m=Math.floor(time/60);
+ let s=time%60;
+ document.getElementById("countdown").innerText=
+ m+":"+(s<10?"0"+s:s);
+ if(time>0) time--;
+},1000);
+
+// PAYPAL
 paypal.Buttons({
 createOrder:(d,a)=>{
- let price=document.getElementById("final_price").value;
- return a.order.create({purchase_units:[{amount:{value:price}}]});
-},
-onApprove:(d,a)=>{
- return a.order.capture().then(()=>{
-   document.getElementById("formStatus").innerHTML="✅ Payment success";
-   fetch("https://script.google.com/macros/s/AKfycbyACvyly4lQKYAUeCjkQ85i05nZJsICPF-HEYAUhxLaXyF9CTQmYI0EGJG0r8whMsY/exec",
-   {method:"POST",body:JSON.stringify({name:form.fullname.value})});
+ return a.order.create({
+ purchase_units:[{amount:{value:document.getElementById("final_price").value}}]
  });
 }
 }).render('#paypal-button-container');
+
 </script>
 
 </body>
