@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12V High Pressure Mini Pump | Portable & Powerful</title>
-
+<title>12V High Pressure Mini Pump</title>
 <style>
 body {font-family: Arial; margin:0; background:#f5f5f5;}
 .container {max-width:600px; margin:auto; background:#fff;}
@@ -20,14 +19,13 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 .slider {position:relative; max-width:100%; margin-top:15px; border:1px solid #ddd; border-radius:12px; overflow:hidden; background:#000;}
 .slide {display:none; text-align:center;}
 .slide img {width:100%; height:100%; object-fit:contain; border-radius:12px;}
-.slide .video-container {position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden;} /* 16:9 */
+.slide .video-container {position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden;}
 .slide iframe {position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
 .prev, .next {position:absolute; top:50%; transform:translateY(-50%); font-size:30px; color:white; font-weight:bold; text-decoration:none; cursor:pointer; user-select:none; background:rgba(0,0,0,0.4); padding:5px 10px; border-radius:5px;}
 .prev {left:10px;}
 .next {right:10px;}
 </style>
 </head>
-
 <body>
 <div class="container">
 
@@ -74,7 +72,7 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 </div>
 </div>
 
-<!-- Chọn gói sản phẩm và quy đổi tiền tệ -->
+<!-- Form -->
 <div class="section">
 <h2>💰 CHOOSE YOUR PACKAGE</h2>
 <form id="orderForm">
@@ -174,7 +172,7 @@ function initSlider(sliderId, prevId, nextId){
 initSlider("videoSlider","prevVideo","nextVideo");
 initSlider("imageSlider","prevImage","nextImage");
 
-// Submit form to Google Sheet
+// Submit form
 const form = document.getElementById('orderForm');
 form.addEventListener('submit', function(e){
   e.preventDefault();
@@ -194,13 +192,13 @@ form.addEventListener('submit', function(e){
     currency_country: document.getElementById('currency_country').value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbyACvyly4lQKYAUeCjkQ85i05nZJsICPF-HEYAUhxLaXyF9CTQmYI0EGJG0r8whMsY/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbyvzjuhDpCIUUy09O-LQmB3g3qHkr4Tq9HPBLD7RvkssDMisGk4ZcWo_-K6wNzk_UQu/exec", {
     method: "POST",
     body: JSON.stringify(data)
   })
   .then(res => res.json())
   .then(resp => {
-    if(resp.status === "success"){
+    if(resp.status==="success"){
       alert("Order submitted successfully!");
       form.reset();
       updatePrice();
@@ -211,6 +209,5 @@ form.addEventListener('submit', function(e){
   .catch(err => alert("Error: " + err));
 });
 </script>
-
 </body>
 </html>
