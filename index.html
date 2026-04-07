@@ -11,20 +11,7 @@ body {font-family: Arial; margin:0; background:#f5f5f5;}
 header {background:#d32f2f; color:#fff; text-align:center; padding:30px;}
 .section {padding:20px;}
 .badge {background:#ffeb3b; padding:5px 10px; font-weight:bold;}
-input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:10px;}
-
-.slider {position:relative; border-radius:12px; overflow:hidden; background:#000;}
-.slide {display:none;}
-.slide img {width:100%; height:100%; object-fit:contain;}
-.video-container {position:relative; padding-top:56.25%;}
-.video-container iframe {position:absolute; width:100%; height:100%; top:0; left:0;}
-
-.prev, .next {
- position:absolute; top:50%; transform:translateY(-50%);
- color:#fff; font-size:30px; cursor:pointer;
- background:rgba(0,0,0,0.4); padding:5px 10px;
-}
-.prev {left:10px;} .next {right:10px;}
+input, select {width:100%; padding:12px; margin:5px 0; border-radius:10px; border:1px solid #ddd;}
 
 .btn-order {
   width:100%;
@@ -34,18 +21,16 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
   border:none;
   font-size:18px;
   border-radius:8px;
-  margin-top:15px;
   cursor:pointer;
-  animation: pulse 1.5s infinite;
+  animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0% {transform:scale(1);}
-  50% {transform:scale(1.05);}
-  100% {transform:scale(1);}
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
 }
 
-/* FLOAT BUTTON */
 .float-btn{
  position:fixed;
  bottom:20px;
@@ -55,25 +40,57 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
  max-width:500px;
  background:#d32f2f;
  color:#fff;
- text-align:center;
  padding:15px;
+ text-align:center;
  border-radius:10px;
  font-size:18px;
  z-index:999;
  cursor:pointer;
- animation:pulse 1.5s infinite;
 }
 
-/* FOMO */
 .fomo{
  background:#fff3cd;
  padding:10px;
  text-align:center;
- font-weight:bold;
  color:#d32f2f;
+ font-weight:bold;
 }
 </style>
 
+<!-- FACEBOOK PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){
+if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s);
+}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+
+<!-- TIKTOK PIXEL -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;
+  var ttq=w[t]=w[t]||[];
+  ttq.methods=["page","track","identify"];
+  ttq.setAndDefer=function(t,e){
+    t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}
+  };
+  for(var i=0;i<ttq.methods.length;i++){
+    ttq.setAndDefer(ttq,ttq.methods[i])
+  }
+  ttq.load('YOUR_TIKTOK_PIXEL_ID');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+
+<!-- PAYPAL -->
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
 
 </head>
@@ -81,9 +98,8 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 <body>
 
 <div class="fomo">
-🔥 <span id="viewing">18</span> người đang xem • Đã bán <span id="sold">8980</span>
-<br>
-⏳ Kết thúc ưu đãi sau: <span id="countdown">10:00</span>
+🔥 <span id="viewing">18</span> người đang xem • Đã bán <span id="sold">8980</span><br>
+⏳ Kết thúc sau: <span id="countdown">10:00</span>
 </div>
 
 <div class="container">
@@ -91,34 +107,23 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 <header>
 <span class="badge">HOT SALE</span>
 <h1>12V HIGH PRESSURE MINI PUMP</h1>
-<p>Portable • Powerful • Energy Saving</p>
 </header>
 
 <div class="section">
-<p style="color:red;">⚠ Only 99 units left</p>
-</div>
-
-<!-- SPEC -->
-<div class="section">
-<h3>⚙️ Specifications</h3>
-<p>150W • 12V • High Pressure</p>
-
 <button class="btn-order" onclick="scrollToOrder()">ĐẶT HÀNG NGAY</button>
 </div>
 
-<!-- FORM -->
 <div class="section">
 <form id="orderForm">
 
 <input name="fullname" placeholder="Full Name" required>
 
-<select id="countryCode" required>
+<select id="countryCode">
 <option value="+84">🇻🇳 +84</option>
 <option value="+1">🇺🇸 +1</option>
 </select>
 
 <input name="phone" placeholder="Phone" required>
-<input name="city" placeholder="City" required>
 
 <select id="package">
 <option value="50">1 Unit</option>
@@ -143,21 +148,26 @@ input, select {width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; bo
 
 </div>
 
-<!-- FLOAT BUTTON -->
-<div class="float-btn" onclick="scrollToOrder()">
-🔥 ĐẶT HÀNG NGAY
-</div>
+<div class="float-btn" onclick="scrollToOrder()">🔥 ĐẶT HÀNG NGAY</div>
 
 <script>
+
+// UTM
+function getUTM(){
+ let url=new URL(window.location.href);
+ return {
+  source:url.searchParams.get("utm_source"),
+  campaign:url.searchParams.get("utm_campaign"),
+  ad:url.searchParams.get("utm_content")
+ };
+}
+const utm=getUTM();
 
 // AUTO COUNTRY
 fetch("https://ipapi.co/json/")
 .then(res=>res.json())
 .then(data=>{
- let map={
-  VN:{code:"+84",cur:"VND"},
-  US:{code:"+1",cur:"USD"}
- };
+ let map={VN:{code:"+84",cur:"VND"},US:{code:"+1",cur:"USD"}};
  let c=map[data.country_code];
  if(c){
   document.getElementById("countryCode").value=c.code;
@@ -189,38 +199,53 @@ function updatePrice(){
 document.getElementById("package").onchange=updatePrice;
 updatePrice();
 
-// SCROLL + FOCUS
+// SCROLL + TRACK
 function scrollToOrder(){
+ fbq('track','AddToCart');
+ ttq.track('AddToCart');
+
  document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
  setTimeout(()=>document.querySelector('[name="fullname"]').focus(),500);
 }
 
 // FOMO
-setInterval(()=>{
- document.getElementById("viewing").innerText=
- Math.floor(Math.random()*20)+10;
-},3000);
-
-setInterval(()=>{
- let s=document.getElementById("sold");
- s.innerText=parseInt(s.innerText)+1;
-},5000);
+setInterval(()=>{document.getElementById("viewing").innerText=Math.floor(Math.random()*20)+10;},3000);
+setInterval(()=>{let s=document.getElementById("sold");s.innerText=parseInt(s.innerText)+1;},5000);
 
 // COUNTDOWN
 let time=600;
 setInterval(()=>{
  let m=Math.floor(time/60);
  let s=time%60;
- document.getElementById("countdown").innerText=
- m+":"+(s<10?"0"+s:s);
+ document.getElementById("countdown").innerText=m+":"+(s<10?"0"+s:s);
  if(time>0) time--;
 },1000);
 
-// PAYPAL
+// PAYPAL + TRACK + SHEET
 paypal.Buttons({
 createOrder:(d,a)=>{
  return a.order.create({
- purchase_units:[{amount:{value:document.getElementById("final_price").value}}]
+  purchase_units:[{amount:{value:document.getElementById("final_price").value}}]
+ });
+},
+onApprove:(d,a)=>{
+ return a.order.capture().then(()=>{
+   fbq('track','Purchase');
+   ttq.track('CompletePayment');
+
+   fetch("YOUR_GOOGLE_SCRIPT_URL",{
+    method:"POST",
+    body:JSON.stringify({
+      name:document.querySelector('[name="fullname"]').value,
+      phone:document.querySelector('[name="phone"]').value,
+      price:document.getElementById("final_price").value,
+      utm_source:utm.source,
+      utm_campaign:utm.campaign,
+      utm_ad:utm.ad
+    })
+   });
+
+   alert("Thanh toán thành công!");
  });
 }
 }).render('#paypal-button-container');
