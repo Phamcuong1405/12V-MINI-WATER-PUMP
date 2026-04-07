@@ -117,14 +117,38 @@ h1 {margin:10px 0;}
 <h2>📦 ORDER NOW</h2>
 
 <form>
-<input type="text" placeholder="Full Name" required style="width:100%; padding:12px; margin:5px 0;">
-<input type="tel" placeholder="Phone Number" required style="width:100%; padding:12px; margin:5px 0;">
-<input type="text" placeholder="Shipping Address" required style="width:100%; padding:12px; margin:5px 0;">
+  <input type="text" name="fullname" placeholder="Full Name" required style="width:100%; padding:12px; margin:5px 0;">
 
+  <label for="country">Country</label>
+  <select id="country" name="country" required style="width:100%; padding:12px; margin:5px 0;">
+    <option value="" disabled selected>Select your country</option>
+    <option value="US">United States</option>
+    <option value="GB">United Kingdom</option>
+    <option value="CA">Canada</option>
+    <option value="AU">Australia</option>
+    <option value="VN">Vietnam</option>
+    <option value="DE">Germany</option>
+    <option value="FR">France</option>
+    <option value="JP">Japan</option>
+    <option value="IN">India</option>
+    <!-- Bạn có thể thêm nhiều quốc gia hơn -->
+  </select>
+
+  <input type="text" name="zipcode" placeholder="ZIP / Postal Code" required style="width:100%; padding:12px; margin:5px 0;">
+
+  <input type="text" name="address" placeholder="Street Address, City, State/Province" required style="width:100%; padding:12px; margin:5px 0;">
+
+  <label for="phone">Phone Number (include country code)</label>
+  <input type="tel" id="phone" name="phone" placeholder="+1 555 555 5555" pattern="^\+\d{1,3}\s?\d{4,14}(?:x.+)?$" title="Include country code, e.g. +1 555 555 5555" required style="width:100%; padding:12px; margin:5px 0;">
+
+  <button type="submit" style="width:100%; padding:12px; background-color:#4CAF50; color:white; font-weight:bold; margin:10px 0; cursor:pointer;">
+    Submit Order
+  </button>
+</form>
 <select style="width:100%; padding:12px; margin:5px 0;">
-<option>1 Unit - $10</option>
-<option>2 Units - $20 (Free Shipping)</option>
-<option>3 Units - $30 (Best Deal)</option>
+<option>1 Unit - $50</option>
+<option>2 Units - $99 (Free Shipping)</option>
+<option>3 Units - $150 (Best Deal)</option>
 </select>
 
 <button class="btn">🔥 PLACE ORDER NOW</button>
