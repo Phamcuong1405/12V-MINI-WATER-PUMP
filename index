@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MÁY BƠM MINI 12v -150W - Xưởng Chế Tạo</title>
+  <title>MINI 12V PUMP - 150W - Workshop</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; background: #f4f7f6; color: #333; }
     .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
 
-    /* Đã sửa phần Header để hiển thị đẹp hơn */
     header { 
       background: linear-gradient(135deg, #d32f2f, #b71c1c); 
       color: white; 
@@ -39,7 +38,6 @@
       display: inline-block;
     }
 
-    /* CAROUSEL */
     .carousel-container { position: relative; width: 100%; overflow: hidden; background: #000; height: 350px; }
     .carousel-wrapper { display: flex; transition: transform 0.5s ease-in-out; height: 100%; }
     .carousel-item { min-width: 100%; }
@@ -48,24 +46,21 @@
     .next { right: 0; }
     .prev { left: 0; }
 
-    /* PRICING */
     .pricing-section { padding: 30px 15px; background: #fff; text-align: center; }
     .pricing-title { color: #d32f2f; margin-bottom: 20px; font-size: 1.4rem; font-weight: bold; }
     .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
     .price-card { border: 2px solid #eee; border-radius: 15px; padding: 20px; position: relative; overflow: hidden; }
     .price-card.popular { border-color: #d32f2f; background: #fff8f8; transform: scale(1.02); }
-    .price-card.popular::after { content: "KHUYÊN DÙNG"; position: absolute; top: 10px; right: -30px; background: #d32f2f; color: white; font-size: 0.7rem; padding: 5px 35px; transform: rotate(45deg); }
+    .price-card.popular::after { content: "RECOMMENDED"; position: absolute; top: 10px; right: -30px; background: #d32f2f; color: white; font-size: 0.7rem; padding: 5px 35px; transform: rotate(45deg); }
     .price-card h4 { font-size: 1.2rem; }
     .price-card .price { font-size: 1.5rem; color: #d32f2f; font-weight: 900; }
     .price-card .gift { font-size: 0.9rem; color: #2e7d32; font-weight: bold; }
 
-    /* FORM */
     .order-section { padding: 30px 20px; background: #fdfdfd; border-top: 5px solid #d32f2f; }
     label { display: block; margin-top: 15px; font-weight: bold; font-size: 0.9rem; color: #555; }
     input, select { width: 100%; padding: 14px; margin-top: 5px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
     .btn-submit { width: 100%; padding: 20px; background: #d32f2f; color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.3rem; margin-top: 30px; cursor: pointer; box-shadow: 0 6px 20px rgba(211,47,47,0.3); }
 
-    /* FOOTER */
     footer { background: #2c3e50; color: white; padding: 40px 20px; }
     .shop-info h3 { border-left: 4px solid #ffeb3b; padding-left: 10px; margin-bottom: 15px; }
     .shop-info p { margin-bottom: 10px; font-size: 0.95rem; }
@@ -78,9 +73,9 @@
 
 <div class="container">
   <header>
-    <span class="badge">MÁY BƠM MINI 12V - 150W</span>
-    <h1>XƯỞNG CHẾ TẠO</h1>
-    <p>GIẢI PHÁP MỚI - TIỆN DỤNG - DỄ LẮP ĐẶT - TIẾT KIỆM ĐIỆN</p>
+    <span class="badge">MINI 12V PUMP - 150W</span>
+    <h1>WORKSHOP</h1>
+    <p>NEW SOLUTION - CONVENIENT - EASY INSTALLATION - ENERGY SAVING</p>
   </header>
 
   <div class="carousel-container">
@@ -94,71 +89,70 @@
   </div>
 
   <section class="pricing-section">
-    <div class="pricing-title">BẢNG GIÁ ƯU ĐÃI HÔM NAY</div>
+    <div class="pricing-title">TODAY'S SPECIAL PRICING</div>
     <div class="pricing-grid">
       <div class="price-card">
-        <h4>Gói 1 máy</h4>
-        <div class="price">250.000đ</div>
-        <p>(PHÍ SHIP TOÀN QUỐC 30K)</p>
+        <h4>1 Unit Package</h4>
+        <div class="price">250,000 VND</div>
+        <p>(Nationwide Shipping Fee: 30,000 VND)</p>
       </div>
       <div class="price-card popular">
-        <h4>Gói 2 máy</h4>
-        <div class="price">500.000đ</div>
-        <div class="gift">MIỄN PHÍ GIAO HÀNG</div>
+        <h4>2 Units Package</h4>
+        <div class="price">500,000 VND</div>
+        <div class="gift">FREE SHIPPING</div>
       </div>
       <div class="price-card">
-        <h4>Gói 3 máy</h4>
-        <div class="price">750.000đ</div>
-        <div class="gift">MIỄN PHÍ GIAO HÀNG VÀ BẢO HÀNH 02 THÁNG CHO ĐẦU BƠM</div>
+        <h4>3 Units Package</h4>
+        <div class="price">750,000 VND</div>
+        <div class="gift">FREE SHIPPING & 2-MONTH WARRANTY FOR PUMP HEAD</div>
       </div>
     </div>
   </section>
 
   <section class="order-section" id="dat-hang">
-    <h2 style="text-align:center; color:#d32f2f;">THÔNG TIN ĐẶT HÀNG</h2>
+    <h2 style="text-align:center; color:#d32f2f;">ORDER INFORMATION</h2>
     <form id="orderForm">
-      <label>Họ và Tên</label>
-      <input type="text" name="name" placeholder="Ví dụ: Nguyễn Văn An" required>
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Example: Nguyen Van A" required>
 
-      <label>Số điện thoại</label>
-      <input type="tel" name="phone" placeholder="Số điện thoại nhận hàng" required>
+      <label>Phone Number</label>
+      <input type="tel" name="phone" placeholder="Delivery phone number" required>
 
-      <label>Địa chỉ nhận hàng</label>
-      <input type="text" name="address" placeholder="Số nhà, tên đường, xã, huyện, tỉnh" required>
+      <label>Delivery Address</label>
+      <input type="text" name="address" placeholder="House number, street, ward, district, city" required>
 
-      <label>Chọn gói ưu đãi</label>
+      <label>Select Package</label>
       <select name="package">
-        <option value="1 cái - 250k">Mua 1 máy bơm - 250.000đ (Phí Ship 30k toàn quốc) </option>
-        <option value="2 cái - 500k">Mua 2 máy bơm - 500.000đ (Miễn phí ship)</option>
-        <option value="3 cái - 750k">Mua 3 máy bơm - 750.000đ (Miễn phí ship và bảo hành 2 tháng cho dầu bơm )</option>
+        <option value="1 unit - 250k">Buy 1 pump - 250,000 VND (Shipping: 30,000 VND nationwide)</option>
+        <option value="2 units - 500k">Buy 2 pumps - 500,000 VND (Free shipping)</option>
+        <option value="3 units - 750k">Buy 3 pumps - 750,000 VND (Free shipping & 2-month warranty)</option>
       </select>
 
-      <label>Ghi chú yêu cầu</label>
-      <input type="text" name="note" placeholder="Yêu cầu thêm (nếu có)">
+      <label>Additional Notes</label>
+      <input type="text" name="note" placeholder="Extra requests (if any)">
 
-      <button type="submit" id="btnSubmit" class="btn-submit">XÁC NHẬN ĐẶT HÀNG</button>
+      <button type="submit" id="btnSubmit" class="btn-submit">CONFIRM ORDER</button>
     </form>
     <div id="msg"></div>
   </section>
 
   <footer>
     <div class="shop-info">
-      <h3>THÔNG TIN LIÊN HỆ</h3>
-      <p>🏠 <strong>Địa chỉ:</strong> XƯỜNG CHẾ TẠO , LĨNH NAM , Hà Nội</p>
-      <p>📞 <strong>Hotline/Zalo:</strong> 0886.073 .622 </p>
-      <p>⏰ <strong>Giờ làm việc:</strong> 08:00 - 21:00 (Cả tuần)</p>
-      <p>🛡️ <strong>Bảo hành:</strong> Lỗi 1 đổi 1 trong 7 ngày</p>
+      <h3>CONTACT INFORMATION</h3>
+      <p>🏠 <strong>Address:</strong> Workshop, Linh Nam, Hanoi</p>
+      <p>📞 <strong>Hotline/Zalo:</strong> 0886 073 622</p>
+      <p>⏰ <strong>Working Hours:</strong> 08:00 - 21:00 (Daily)</p>
+      <p>🛡️ <strong>Warranty:</strong> 1-for-1 exchange within 7 days if defective</p>
     </div>
     <div class="trust-badges">
-      <div>🚚<br>Giao hàng toàn quốc</div>
-      <div>📦<br>Kiểm tra trước khi trả tiền</div>
-      <div>⭐<br>Chất lượng hàng đầu</div>
+      <div>🚚<br>Nationwide Delivery</div>
+      <div>📦<br>Check Before Payment</div>
+      <div>⭐<br>Top Quality</div>
     </div>
   </footer>
 </div>
 
 <script>
-  // CAROUSEL LOGIC
   let currentIndex = 0;
   const slides = document.getElementById('carousel');
   function moveSlide(step) {
@@ -167,7 +161,6 @@
   }
   setInterval(() => moveSlide(1), 5000);
 
-  // LOGIC GỬI ĐƠN (ĐÃ FIX GỬI TRÙNG)
   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyC9ZqEzpvd-q1afHQvO1hboWUeaRyyW_0Uo0a3rwZO4IQVQbXqP0y3syIYfQzpfo88jQ/exec";
 
   document.getElementById("orderForm").addEventListener("submit", function(e) {
@@ -177,7 +170,7 @@
 
     if (btn.disabled) return;
     btn.disabled = true;
-    btn.innerText = "ĐANG XỬ LÝ...";
+    btn.innerText = "PROCESSING...";
 
     const params = new URLSearchParams({
       name: this.name.value,
@@ -190,16 +183,15 @@
 
     const finalUrl = WEB_APP_URL + "?" + params.toString();
     
-    // SỬ DỤNG 1 PHƯƠNG THỨC DUY NHẤT (IMAGE PIXEL) ĐỂ TRANH TRÙNG ĐƠN [cite: 38, 41]
     const img = new Image();
     img.src = finalUrl;
 
     setTimeout(() => {
       msg.style.color = "green";
-      msg.innerHTML = "✅ ĐẶT HÀNG THÀNH CÔNG! <br> Shop sẽ liên hệ với bạn ngay.";
+      msg.innerHTML = "✅ ORDER SUCCESSFUL! <br> We will contact you shortly.";
       this.reset();
       btn.disabled = false;
-      btn.innerText = "ĐẶT MUA THÊM";
+      btn.innerText = "ORDER MORE";
     }, 1500);
   });
 </script>
