@@ -2,44 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Moved to here for better compatibility -->
 <title>Mini Pump Store</title>
-
 <style>
 body{font-family:Arial;margin:0;background:#f5f5f5;}
 .container{max-width:600px;margin:auto;background:#fff;}
 header{background:#d32f2f;color:#fff;text-align:center;padding:25px;}
 .section{padding:20px;}
 .badge{background:#ffeb3b;padding:5px 10px;font-weight:bold;}
-
 input,select{
 width:100%;padding:12px;margin:6px 0;
 border:1px solid #ddd;border-radius:10px;
 }
-
 .slider{position:relative;border-radius:12px;overflow:hidden;background:#000;}
 .slide{display:none;}
 .slide img{width:100%;height:100%;object-fit:contain;}
-
 .video-container{position:relative;padding-top:56.25%;}
 .video-container iframe{
 position:absolute;width:100%;height:100%;top:0;left:0;
 }
-
 .prev,.next{
 position:absolute;top:50%;transform:translateY(-50%);
 color:#fff;font-size:30px;cursor:pointer;
 background:rgba(0,0,0,0.4);padding:5px 10px;
 }
 .prev{left:10px;} .next{right:10px;}
-
 .order-btn{
 background:#ff5722;color:#fff;font-size:18px;
 font-weight:bold;padding:15px;border:none;
 border-radius:12px;width:100%;cursor:pointer;
 margin-bottom:15px;
 }
-
 /* FOOTER */
 .footer{
 background:#111;color:#fff;padding:30px 20px;
@@ -48,37 +41,28 @@ font-size:14px;line-height:1.7;margin-top:30px;
 .footer h3{color:#ff5722;margin-top:0;}
 .footer a{color:#4caf50;text-decoration:none;font-weight:bold;}
 </style>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
-
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
 </head>
-
 <body>
-
 <div class="container">
-
 <header>
 <span class="badge">HOT SALE</span>
 <h1>12V HIGH PRESSURE MINI PUMP</h1>
 <p>Portable • Powerful • Energy Saving</p>
 </header>
-
 <div class="section">
 <p style="color:red;">⚠ Only 626 units left</p>
 <p style="color:green;">✔ 8,989+ sold this month</p>
 </div>
-
 <!-- 🔥 DESCRIPTION -->
 <div class="section">
 <h3>💥 Powerful Mini Pump - Small but Mighty</h3>
-
 <p>
 Máy bơm mini 12V áp lực cao – giải pháp hoàn hảo cho mọi nhu cầu sử dụng nước tại nhà, DIY hoặc mang đi mọi nơi.
 Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết kiệm thời gian và công sức.
 </p>
-
 <h4>⚙️ Công dụng chính:</h4>
 <ul>
 <li>🚿 Rửa xe máy, ô tô nhanh chóng</li>
@@ -87,7 +71,6 @@ Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết ki
 <li>🧽 Vệ sinh sân nhà, ban công</li>
 <li>🔧 DIY hệ thống nước mini</li>
 </ul>
-
 <h4>🔥 Ưu điểm nổi bật:</h4>
 <ul>
 <li>✔ Áp lực mạnh – phun xa, sạch nhanh</li>
@@ -97,7 +80,6 @@ Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết ki
 <li>✔ Độ bền cao</li>
 </ul>
 </div>
-
 <!-- VIDEO -->
 <div class="section">
 <h3>🎥 Videos</h3>
@@ -108,7 +90,6 @@ Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết ki
 <span class="next" onclick="moveSlide('video',1)">❯</span>
 </div>
 </div>
-
 <!-- IMAGE -->
 <div class="section">
 <h3>📸 Images</h3>
@@ -121,100 +102,84 @@ Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết ki
 <span class="next" onclick="moveSlide('image',1)">❯</span>
 </div>
 </div>
-
 <!-- FORM -->
 <div class="section">
 <button class="order-btn" onclick="scrollToForm()">🔥 ĐẶT HÀNG NGAY</button>
-
 <form id="orderForm">
 <input name="fullname" placeholder="Full Name" required>
 <input id="phone" type="tel" placeholder="Phone" required>
-
 <input name="house_number" placeholder="House Number" required>
 <input name="street_name" placeholder="Street" required>
 <input name="city" placeholder="City" required>
 <input name="state_province" placeholder="State" required>
 <input name="postal_code" placeholder="ZIP" required>
-
 <select id="package">
 <option value="50">1 Unit - $50 + $20 SHIP</option>
-<option value="99">2 Units - $95 +$15 SHIP</option>
-<option value="99">3 Units - $140 +$10 SHIP</option>
- <option value="99">10 Units - +10 inbox shoop</option>
+<option value="95">2 Units - $95 +$15 SHIP</option>
+<option value="140">3 Units - $140 +$10 SHIP</option>
+<option value="150">10 Units - +10 inbox shoop</option>
 </select>
-
 <p id="priceBox">Price: <span id="converted_price">$50</span></p>
-
 <input type="hidden" id="final_price">
-
 <p id="formStatus"></p>
 </form>
-
 <p id="paypalNotice" style="color:red;">⚠ Fill all info before payment</p>
 <div id="paypal-button-container" style="display:none;"></div>
 </div>
-
 </div>
-
 <!-- FOOTER -->
 <div class="footer">
 <h3>🏪 Mini Pump Store</h3>
-
 <p style="color:#bbb;">
 Chuyên cung cấp máy bơm mini áp lực cao, tiện lợi cho gia đình và DIY.
 </p>
-
 <p>
 📱 WhatsApp:<br>
 <a href="https://wa.me/84886073622" target="_blank">
 +84 886 073 622
 </a>
 </p>
-
 <p>
 📍 Địa chỉ:<br>
 Ngõ 1 Tân Khai, Vĩnh Hưng<br>
 Hoàng Mai, Hà Nội, Việt Nam
 </p>
-
 <p>
 📧 Email:<br>
 <a href="mailto:cuongkool1994@gmail.com" style="color:#ff9800;">
 cuongkool1994@gmail.com
 </a>
 </p>
-
 <p style="font-size:12px;color:#777;text-align:center;">
 © 2026 Mini Pump Store
 </p>
 </div>
-
 <script>
 // slider
 let slideIndex={video:0,image:0};
 function moveSlide(type,n){
- let s=document.querySelectorAll(`#${type}Slider .slide`);
- slideIndex[type]=(slideIndex[type]+n+s.length)%s.length;
- s.forEach((e,i)=>e.style.display=i===slideIndex[type]?"block":"none");
+let s=document.querySelectorAll(`#${type}Slider .slide`);
+slideIndex[type]=(slideIndex[type]+n+s.length)%s.length;
+s.forEach((e,i)=>e.style.display=i===slideIndex[type]?"block":"none");
 }
 moveSlide('video',0);
 moveSlide('image',0);
 
 // scroll
 function scrollToForm(){
- document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
+document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
 }
 
 // phone
 const iti=window.intlTelInput(document.querySelector("#phone"),{
- initialCountry:"auto",
- geoIpLookup:cb=>{
-  fetch("https://ipapi.co/json")
-  .then(r=>r.json())
-  .then(d=>cb(d.country_code))
-  .catch(()=>cb("VN"));
- },
- separateDialCode:true
+initialCountry:"auto",
+geoIpLookup:cb=>{
+fetch("https://ipapi.co/json")
+.then(r=>r.json())
+.then(d=>cb(d.country_code))
+.catch(()=>cb("VN"));
+},
+separateDialCode:true
 });
 
 // validate
@@ -222,27 +187,32 @@ const form=document.getElementById("orderForm");
 const paypalBox=document.getElementById("paypal-button-container");
 
 form.oninput=()=>{
- let valid=true;
- form.querySelectorAll("[required]").forEach(i=>{
-   if(!i.value) valid=false;
- });
- paypalBox.style.display=valid?"block":"none";
+let valid=true;
+form.querySelectorAll("[required]").forEach(i=>{
+if(!i.value) valid=false;
+});
+paypalBox.style.display=valid?"block":"none";
 };
+
+// Update price display when package selection changes
+document.getElementById("package").addEventListener('change', function() {
+const selectedOption = this.options[this.selectedIndex];
+document.getElementById("converted_price").innerText = `$${selectedOption.value}`;
+document.getElementById("final_price").value = selectedOption.value;
+});
 
 // paypal
 paypal.Buttons({
 createOrder:(d,a)=>{
- let price=document.getElementById("package").value;
- return a.order.create({purchase_units:[{amount:{value:price}}]});
+let price=document.getElementById("final_price").value;
+return a.order.create({purchase_units:[{amount:{value:price}}]});
 },
 onApprove:(d,a)=>{
- return a.order.capture().then(()=>{
-   document.getElementById("formStatus").innerHTML="✅ Payment success";
- });
+return a.order.capture().then(()=>{
+document.getElementById("formStatus").innerHTML="✅ Payment success";
+});
 }
 }).render('#paypal-button-container');
-
 </script>
-
 </body>
 </html>
