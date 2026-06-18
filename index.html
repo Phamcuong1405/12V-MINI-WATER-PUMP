@@ -84,7 +84,7 @@ body {
   padding: 20px;
 }
 
-.customer-info {
+.customer-info, .shipping-address, .order-details {
   margin-top: 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -92,20 +92,14 @@ body {
   padding: 20px;
 }
 
-.shipping-address {
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  padding: 20px;
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
 
-.order-details {
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  padding: 20px;
+.form-grid div {
+  width: 100%;
 }
 
 .trust-box {
@@ -159,7 +153,6 @@ body {
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
 </head>
 <body>
 
@@ -221,11 +214,11 @@ body {
 </div>
 
 <div class="customer-info">
-  <h3>👤 Customer Information</h3>
+  <h3>👤 Thông tin khách hàng</h3>
   <form id="orderForm" action="#" method="post">
     <div class="form-grid">
       <div>
-        <label>Full Name *</label>
+        <label>Họ và tên đầy đủ *</label>
         <input type="text" name="fullname" required>
       </div>
       <div>
@@ -235,7 +228,7 @@ body {
     </div>
     <div class="form-grid">
       <div>
-        <label>Phone Number *</label>
+        <label>Số điện thoại *</label>
         <input id="phone" type="tel" name="phone" required>
       </div>
     </div>
@@ -243,49 +236,49 @@ body {
 </div>
 
 <div class="shipping-address">
-  <h3>🚚 Shipping Address</h3>
+  <h3>🚚 Địa chỉ giao hàng</h3>
   <form id="orderForm" action="#" method="post">
     <div class="form-grid">
       <div>
-        <label>Country *</label>
+        <label>Quốc gia *</label>
         <select name="country" required>
-          <option value="">Select Country</option>
-          <option>United States</option>
+          <option value="">Chọn quốc gia</option>
+          <option>Hoa Kỳ</option>
           <option>Canada</option>
-          <option>Australia</option>
-          <option>United Kingdom</option>
-          <option>Germany</option>
-          <option>France</option>
-          <option>Japan</option>
-          <option>South Korea</option>
+          <option>Úc</option>
+          <option>Vương quốc Anh</option>
+          <option>Đức</option>
+          <option>Pháp</option>
+          <option>Nhật Bản</option>
+          <option>Hàn Quốc</option>
           <option>Singapore</option>
           <option>Malaysia</option>
-          <option>Thailand</option>
-          <option>Other</option>
+          <option>Thái Lan</option>
+          <option>Khác</option>
         </select>
       </div>
       <div>
-        <label>State / Province</label>
+        <label>Bang/Tỉnh</label>
         <input type="text" name="state">
       </div>
     </div>
     <div class="form-grid">
       <div>
-        <label>City *</label>
+        <label>Thành phố *</label>
         <input type="text" name="city" required>
       </div>
       <div>
-        <label>Postal Code / ZIP *</label>
+        <label>Mã bưu chính / ZIP *</label>
         <input type="text" name="zipcode" required>
       </div>
     </div>
     <div class="form-grid">
       <div>
-        <label>Street Address *</label>
+        <label>Địa chỉ đường phố *</label>
         <input type="text" name="address1" required>
       </div>
       <div>
-        <label>Apartment / Unit</label>
+        <label>Căn hộ/Đơn vị</label>
         <input type="text" name="address2">
       </div>
     </div>
@@ -293,15 +286,15 @@ body {
 </div>
 
 <div class="order-details">
-  <h3>📦 Order Details</h3>
+  <h3>📦 Chi tiết đơn hàng</h3>
   <form id="orderForm" action="#" method="post">
     <div class="form-grid">
       <div>
-        <label>Quantity</label>
+        <label>Số lượng</label>
         <input type="number" name="quantity" value="1" min="1">
       </div>
       <div>
-        <label>Additional Notes</label>
+        <label>Ghi chú bổ sung</label>
         <textarea name="note"></textarea>
       </div>
     </div>
