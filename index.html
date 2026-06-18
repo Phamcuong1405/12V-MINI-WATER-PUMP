@@ -1,4 +1,3 @@
-<!-- Tên file: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,205 +5,369 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mini Pump Store</title>
 <style>
-/* ... CSS hiện tại ... */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f8fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+.product-images {
+  width: 60%;
+}
+
+.product-info {
+  width: 40%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+.slider {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.slide {
+  display: none;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5px 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.product-description {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+.customer-info {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+.shipping-address {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+.order-details {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 20px;
+}
+
+.trust-box {
+  background-color: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.promo {
+  background-color: #ff4d00;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.order-btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff6a00, #ff9500);
+  color: white;
+  box-shadow: 0 8px 20px rgba(255, 77, 0, .4);
+  animation: pulse 1.5s infinite;
+}
+
+.order-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
 <script src="https://www.paypal.com/sdk/js?client-id=AZVBW8AbbYBa_AueMaS-rhE-Nah0E-g76trzpgzh_kj-nhB3qySFWX9hN0CzRjjNnRwQRaiRu1RH26Dl&currency=USD"></script>
 </head>
 <body>
+
 <div class="container">
-<header>
-<span class="badge">HOT SALE</span>
-<h1>12V HIGH PRESSURE MINI PUMP</h1>
-<p>Portable • Powerful • Energy Saving</p>
-</header>
-<div class="section">
-<p style="color:red;">⚠ Only 626 units left</p>
-<p style="color:green;">✔ 8,989+ sold this month</p>
+  <div class="header">
+    <div class="product-images">
+      <div class="slider" id="imageSlider">
+        <div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg"></div>
+      </div>
+      <button class="prev" onclick="moveSlide('image', -1)">❮</button>
+      <button class="next" onclick="moveSlide('image', 1)">❯</button>
+    </div>
+    <div class="product-info">
+      <h2>12V HIGH PRESSURE MINI PUMP</h2>
+      <p><span style="color:red;">⚠ Only 626 units left</span></p>
+      <p><span style="color:green;">✔ 8,989+ sold this month</span></p>
+      <div class="promo">
+        🔥 FREE SHIPPING TODAY<br>
+        ⏰ Offer Ends In 24 Hours
+      </div>
+      <h3>PRICE: $XX.XX</h3>
+      <h3>QUANTITY:</h3>
+      <input type="number" name="quantity" value="1" min="1">
+      <button class="order-btn">🔥 ORDER NOW - LIMITED STOCK</button>
+      <div class="trust-box">
+        ✅ Secure Checkout<br>
+        🚚 Worldwide Shipping<br>
+        💳 PayPal Protected<br>
+        🔄 7-Day Replacement
+      </div>
+    </div>
+  </div>
 </div>
-<!-- 🔥 DESCRIPTION -->
-<div class="section">
-<h3>💥 Powerful Mini Pump - Small but Mighty</h3>
-<p>
-Máy bơm mini 12V áp lực cao – giải pháp hoàn hảo cho mọi nhu cầu sử dụng nước tại nhà, DIY hoặc mang đi mọi nơi.
-Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết kiệm thời gian và công sức.
-</p>
-<h4>⚙️ Công dụng chính:</h4>
-<ul>
-<li>🚿 Rửa xe máy, ô tô nhanh chóng</li>
-<li>🌱 Tưới cây, làm vườn tiện lợi</li>
-<li>💧 Bơm nước từ bể, xô, hồ chứa</li>
-<li>🧽 Vệ sinh sân nhà, ban công</li>
-<li>🔧 DIY hệ thống nước mini</li>
-</ul>
-<h4>🔥 Ưu điểm nổi bật:</h4>
-<ul>
-<li>✔ Áp lực mạnh – phun xa, sạch nhanh</li>
-<li>✔ Tiết kiệm điện – dùng nguồn 12V</li>
-<li>✔ Nhỏ gọn – dễ mang theo</li>
-<li>✔ Lắp đặt đơn giản</li>
-<li>✔ Độ bền cao</li>
-</ul>
+
+<div class="product-description">
+  <h3>💥 Powerful Mini Pump - Small but Mighty</h3>
+  <p>
+    Máy bơm mini 12V áp lực cao – giải pháp hoàn hảo cho mọi nhu cầu sử dụng nước tại nhà, DIY hoặc mang đi mọi nơi.
+    Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết kiệm thời gian và công sức.
+  </p>
+  <h4>⚙️ Công dụng chính:</h4>
+  <ul>
+    <li>🚿 Rửa xe máy, ô tô nhanh chóng</li>
+    <li>🌱 Tưới cây, làm vườn tiện lợi</li>
+    <li>💧 Bơm nước từ bể, xô, hồ chứa</li>
+    <li>🧽 Vệ sinh sân nhà, ban công</li>
+    <li>🔧 DIY hệ thống nước mini</li>
+  </ul>
+  <h4>🔥 Ưu điểm nổi bật:</h4>
+  <ul>
+    <li>✔ Áp lực mạnh – phun xa, sạch nhanh</li>
+    <li>✔ Tiết kiệm điện – dùng nguồn 12V</li>
+    <li>✔ Nhỏ gọn – dễ mang theo</li>
+    <li>✔ Lắp đặt đơn giản</li>
+    <li>✔ Độ bền cao</li>
+  </ul>
 </div>
-<!-- VIDEO -->
-<div class="section">
-<h3>🎥 Videos</h3>
-<div class="slider" id="videoSlider">
-<div class="slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/QwbNfdYCYZ4"></iframe></div></div>
-<div class="slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/RWg9nFETMvY"></iframe></div></div>
-<span class="prev" onclick="moveSlide('video',-1)">❮</span>
-<span class="next" onclick="moveSlide('video',1)">❯</span>
+
+<div class="customer-info">
+  <h3>👤 Customer Information</h3>
+  <form id="orderForm" action="#" method="post">
+    <div class="form-grid">
+      <div>
+        <label>Full Name *</label>
+        <input type="text" name="fullname" required>
+      </div>
+      <div>
+        <label>Email *</label>
+        <input type="email" name="email" required>
+      </div>
+    </div>
+    <div class="form-grid">
+      <div>
+        <label>Phone Number *</label>
+        <input id="phone" type="tel" name="phone" required>
+      </div>
+    </div>
+  </form>
 </div>
+
+<div class="shipping-address">
+  <h3>🚚 Shipping Address</h3>
+  <form id="orderForm" action="#" method="post">
+    <div class="form-grid">
+      <div>
+        <label>Country *</label>
+        <select name="country" required>
+          <option value="">Select Country</option>
+          <option>United States</option>
+          <option>Canada</option>
+          <option>Australia</option>
+          <option>United Kingdom</option>
+          <option>Germany</option>
+          <option>France</option>
+          <option>Japan</option>
+          <option>South Korea</option>
+          <option>Singapore</option>
+          <option>Malaysia</option>
+          <option>Thailand</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label>State / Province</label>
+        <input type="text" name="state">
+      </div>
+    </div>
+    <div class="form-grid">
+      <div>
+        <label>City *</label>
+        <input type="text" name="city" required>
+      </div>
+      <div>
+        <label>Postal Code / ZIP *</label>
+        <input type="text" name="zipcode" required>
+      </div>
+    </div>
+    <div class="form-grid">
+      <div>
+        <label>Street Address *</label>
+        <input type="text" name="address1" required>
+      </div>
+      <div>
+        <label>Apartment / Unit</label>
+        <input type="text" name="address2">
+      </div>
+    </div>
+  </form>
 </div>
-<!-- IMAGE -->
-<div class="section">
-<h3>📸 Images</h3>
-<div class="slider" id="imageSlider">
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg"></div>
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg"></div>
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg"></div>
-<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/c2e43ddc6d565ef048555b2bf89fe05236131707/ca0d3d038f943eca67852.jpg"></div>
-<span class="prev" onclick="moveSlide('image',-1)">❮</span>
-<span class="next" onclick="moveSlide('image',1)">❯</span>
+
+<div class="order-details">
+  <h3>📦 Order Details</h3>
+  <form id="orderForm" action="#" method="post">
+    <div class="form-grid">
+      <div>
+        <label>Quantity</label>
+        <input type="number" name="quantity" value="1" min="1">
+      </div>
+      <div>
+        <label>Additional Notes</label>
+        <textarea name="note"></textarea>
+      </div>
+    </div>
+  </form>
+  <button class="order-btn">🔥 ORDER NOW - LIMITED STOCK</button>
 </div>
-</div>
-<!-- FORM -->
-<div class="section">
-<button class="order-btn" onclick="scrollToForm()">🔥 ĐẶT HÀNG NGAY</button>
-<form id="orderForm">
-<label>Full Name <span class="required">*</span></label>
-<input type="text" name="fullname" required>
-<label>Email <span class="required">*</span></label>
-<input type="email" name="email" required>
-<label>Phone Number <span class="required">*</span></label>
-<input type="text" name="phone" required>
-<label>Country <span class="required">*</span></label>
-<select name="country" required>
-<option value="">Select Country</option>
-<option>United States</option>
-<option>Canada</option>
-<option>Australia</option>
-<option>United Kingdom</option>
-<option>Germany</option>
-<option>France</option>
-<option>Japan</option>
-<option>South Korea</option>
-<option>Singapore</option>
-<option>Malaysia</option>
-<option>Thailand</option>
-<option>Other</option>
-</select>
-<label>State / Province</label>
-<input type="text" name="state">
-<label>City <span class="required">*</span></label>
-<input type="text" name="city" required>
-<label>Postal Code / ZIP <span class="required">*</span></label>
-<input type="text" name="zipcode" required>
-<label>Street Address <span class="required">*</span></label>
-<input type="text" name="address1" required>
-<label>Apartment / Unit / Building</label>
-<input type="text" name="address2">
-<label>Quantity</label>
-<input type="number" name="quantity" value="1" min="1">
-<label>Additional Notes</label>
-<textarea name="note"></textarea>
-<label>
-<input type="checkbox" required style="width:auto">
-I confirm that the shipping address is correct.
-</label>
-<button type="submit">PLACE ORDER</button>
-</form>
-<p id="paypalNotice" style="color:red;">⚠ Fill all info before payment</p>
-<div id="paypal-button-container" style="display:none;"></div>
-</div>
-</div>
+
 <!-- FOOTER -->
 <div class="footer">
-<h3>🏪 Mini Pump Store</h3>
-<p style="color:#bbb;">
-Chuyên cung cấp máy bơm mini áp lực cao, tiện lợi cho gia đình và DIY.
-</p>
-<p>
-📱 WhatsApp:<br>
-<a href="https://wa.me/84886073622" target="_blank">
-+84 886 073 622
-</a>
-</p>
-<p>
-📍 Địa chỉ:<br>
-Ngõ 1 Tân Khai, Vĩnh Hưng<br>
-Hoàng Mai, Hà Nội, Việt Nam
-</p>
-<p>
-📧 Email:<br>
-<a href="mailto:cuongkool1994@gmail.com" style="color:#ff9800;">
-cuongkool1994@gmail.com
-</a>
-</p>
-<p style="font-size:12px;color:#777;text-align:center;">
-© 2026 Mini Pump Store
-</p>
+  <h3>🏪 Mini Pump Store</h3>
+  <p style="color:#bbb;">
+    Chuyên cung cấp máy bơm mini áp lực cao, tiện lợi cho gia đình và DIY.
+  </p>
+  <p>
+    📱 WhatsApp:<br>
+    <a href="https://wa.me/84886073622" target="_blank">
+      +84 886 073 622
+    </a>
+  </p>
+  <p>
+    📍 Địa chỉ:<br>
+    Ngõ 1 Tân Khai, Vĩnh Hưng<br>
+    Hoàng Mai, Hà Nội, Việt Nam
+  </p>
+  <p>
+    📧 Email:<br>
+    <a href="mailto:cuongkool1994@gmail.com" style="color:#ff9800;">
+      cuongkool1994@gmail.com
+    </a>
+  </p>
+  <p style="font-size:12px;color:#777;text-align:center;">
+    © 2026 Mini Pump Store
+  </p>
 </div>
+
 <script>
-// slider
-let slideIndex={video:0,image:0};
-function moveSlide(type,n){
-let s=document.querySelectorAll(`#${type}Slider .slide`);
-slideIndex[type]=(slideIndex[type]+n+s.length)%s.length;
-s.forEach((e,i)=>e.style.display=i===slideIndex[type]?"block":"none");
+let slideIndex = { image: 0 };
+
+function moveSlide(type, n) {
+  let slides = document.querySelectorAll(`#${type}Slider .slide`);
+  slideIndex[type] = (slideIndex[type] + n + slides.length) % slides.length;
+  slides.forEach((slide, index) => {
+    slide.style.display = index === slideIndex[type] ? 'block' : 'none';
+  });
 }
-moveSlide('video',0);
-moveSlide('image',0);
-// scroll
-function scrollToForm(){
-document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
-}
+
+moveSlide('image', 0);
+
 // phone
-const iti=window.intlTelInput(document.querySelector("#phone"),{
-initialCountry:"auto",
-geoIpLookup:cb=>{
-fetch("https://ipapi.co/json")
-.then(r=>r.json())
-.then(d=>cb(d.country_code))
-.catch(()=>cb("VN"));
-},
-separateDialCode:true
+const iti = window.intlTelInput(document.querySelector("#phone"), {
+  initialCountry: "auto",
+  geoIpLookup: cb => {
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => cb(data.country_code))
+      .catch(() => cb("VN"));
+  },
+  separateDialCode: true
 });
-// validate
-const form=document.getElementById("orderForm");
-const paypalBox=document.getElementById("paypal-button-container");
-form.oninput=()=>{
-let valid=true;
-form.querySelectorAll("[required]").forEach(i=>{
-if(!i.value) valid=false;
-});
-paypalBox.style.display=valid?"block":"none";
-};
-// Update price display when package selection changes
-document.getElementById("package").addEventListener('change', function() {
-const selectedOption = this.options[this.selectedIndex];
-document.getElementById("converted_price").innerText = `$${selectedOption.value}`;
-document.getElementById("final_price").value = selectedOption.value;
-});
-// paypal
-paypal.Buttons({
-createOrder:(d,a)=>{
-let price=document.getElementById("final_price").value;
-return a.order.create({purchase_units:[{amount:{value:price}}]});
-},
-onApprove:(d,a)=>{
-return a.order.capture().then(()=>{
-document.getElementById("formStatus").innerHTML="✅ Payment success";
-});
-}
-}).render('#paypal-button-container');
-</script>
-<script>
-document.getElementById('orderForm').addEventListener('submit',function(e){
-e.preventDefault();
-alert("Thank you! Your order has been received. We will contact you shortly.");
+
+// form submission
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert("Thank you! Your order has been received. We will contact you shortly.");
 });
 </script>
+
 </body>
 </html>
