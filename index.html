@@ -1,58 +1,12 @@
+<!-- Tên file: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Moved to here for better compatibility -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mini Pump Store</title>
 <style>
-body{font-family:Arial;margin:0;background:#f5f5f5;}
-.container{max-width:600px;margin:auto;background:#fff;}
-header{background:#d32f2f;color:#fff;text-align:center;padding:25px;}
-.section{padding:20px;}
-.badge{background:#ffeb3b;padding:5px 10px;font-weight:bold;}
-input,select{
-width:100%;padding:12px;margin:6px 0;
-border:1px solid #ddd;border-radius:10px;
-}
-.slider{position:relative;border-radius:12px;overflow:hidden;background:#000;}
-.slide{display:none;}
-.slide img{width:100%;height:100%;object-fit:contain;}
-.video-container{position:relative;padding-top:56.25%;}
-.video-container iframe{
-position:absolute;width:100%;height:100%;top:0;left:0;
-}
-.prev,.next{
-position:absolute;top:50%;transform:translateY(-50%);
-color:#fff;font-size:30px;cursor:pointer;
-background:rgba(0,0,0,0.4);padding:5px 10px;
-}
-.prev{left:10px;} .next{right:10px;}
-.order-btn{
-background:#ff5722;color:#fff;font-size:18px;
-font-weight:bold;padding:15px;border:none;
-border-radius:12px;width:100%;cursor:pointer;
-margin-bottom:15px;
-}
-.confirm-order-btn {
-  background-color: #4CAF50; /* Màu nền xanh lá */
-  color: white; /* Màu chữ trắng */
-  padding: 10px 20px; /* Khoảng cách nội dung nút */
-  border: none; /* Không có viền */
-  border-radius: 5px; /* Bo tròn góc */
-  cursor: pointer; /* Pointer khi di chuột lên */
-  font-size: 16px; /* Cỡ chữ */
-}
-
-.confirm-order-btn:hover {
-  background-color: #45a049; /* Màu nền xanh lá đậm hơn khi di chuột lên */
-}
-/* FOOTER */
-.footer{
-background:#111;color:#fff;padding:30px 20px;
-font-size:14px;line-height:1.7;margin-top:30px;
-}
-.footer h3{color:#ff5722;margin-top:0;}
-.footer a{color:#4caf50;text-decoration:none;font-weight:bold;}
+/* ... CSS hiện tại ... */
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
@@ -119,23 +73,47 @@ Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết ki
 <div class="section">
 <button class="order-btn" onclick="scrollToForm()">🔥 ĐẶT HÀNG NGAY</button>
 <form id="orderForm">
-<input name="fullname" placeholder="Full Name" required>
-<input id="phone" type="tel" placeholder="Phone" required>
-<input name="house_number" placeholder="House Number" required>
-<input name="street_name" placeholder="Street" required>
-<input name="city" placeholder="City" required>
-<input name="state_province" placeholder="State" required>
-<input name="postal_code" placeholder="ZIP" required>
-<select id="package">
-<option value="50">1 Unit - $50 + $20 SHIP</option>
-<option value="95">2 Units - $95 +$15 SHIP</option>
-<option value="140">3 Units - $140 +$10 SHIP</option>
-<option value="150">10 Units - +10 inbox shoop</option>
+<label>Full Name <span class="required">*</span></label>
+<input type="text" name="fullname" required>
+<label>Email <span class="required">*</span></label>
+<input type="email" name="email" required>
+<label>Phone Number <span class="required">*</span></label>
+<input type="text" name="phone" required>
+<label>Country <span class="required">*</span></label>
+<select name="country" required>
+<option value="">Select Country</option>
+<option>United States</option>
+<option>Canada</option>
+<option>Australia</option>
+<option>United Kingdom</option>
+<option>Germany</option>
+<option>France</option>
+<option>Japan</option>
+<option>South Korea</option>
+<option>Singapore</option>
+<option>Malaysia</option>
+<option>Thailand</option>
+<option>Other</option>
 </select>
-<p id="priceBox">Price: <span id="converted_price">$50</span></p>
-<input type="hidden" id="final_price">
-<p id="formStatus"></p>
-<button type="submit" class="confirm-order-btn">Xác nhận Đơn Hàng</button>
+<label>State / Province</label>
+<input type="text" name="state">
+<label>City <span class="required">*</span></label>
+<input type="text" name="city" required>
+<label>Postal Code / ZIP <span class="required">*</span></label>
+<input type="text" name="zipcode" required>
+<label>Street Address <span class="required">*</span></label>
+<input type="text" name="address1" required>
+<label>Apartment / Unit / Building</label>
+<input type="text" name="address2">
+<label>Quantity</label>
+<input type="number" name="quantity" value="1" min="1">
+<label>Additional Notes</label>
+<textarea name="note"></textarea>
+<label>
+<input type="checkbox" required style="width:auto">
+I confirm that the shipping address is correct.
+</label>
+<button type="submit">PLACE ORDER</button>
 </form>
 <p id="paypalNotice" style="color:red;">⚠ Fill all info before payment</p>
 <div id="paypal-button-container" style="display:none;"></div>
@@ -223,14 +201,9 @@ document.getElementById("formStatus").innerHTML="✅ Payment success";
 }).render('#paypal-button-container');
 </script>
 <script>
-document.getElementById('orderForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Ngăn chặn việc gửi form mặc định
-
-  // Lấy dữ liệu từ form
-  const formData = new FormData(this);
-
-  // Xử lý dữ liệu (ví dụ: hiển thị thông báo, gửi lên server, v.v.)
-  alert('Đơn hàng đã được xác nhận!');
+document.getElementById('orderForm').addEventListener('submit',function(e){
+e.preventDefault();
+alert("Thank you! Your order has been received. We will contact you shortly.");
 });
 </script>
 </body>
