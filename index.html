@@ -33,6 +33,19 @@ font-weight:bold;padding:15px;border:none;
 border-radius:12px;width:100%;cursor:pointer;
 margin-bottom:15px;
 }
+.confirm-order-btn {
+  background-color: #4CAF50; /* Màu nền xanh lá */
+  color: white; /* Màu chữ trắng */
+  padding: 10px 20px; /* Khoảng cách nội dung nút */
+  border: none; /* Không có viền */
+  border-radius: 5px; /* Bo tròn góc */
+  cursor: pointer; /* Pointer khi di chuột lên */
+  font-size: 16px; /* Cỡ chữ */
+}
+
+.confirm-order-btn:hover {
+  background-color: #45a049; /* Màu nền xanh lá đậm hơn khi di chuột lên */
+}
 /* FOOTER */
 .footer{
 background:#111;color:#fff;padding:30px 20px;
@@ -122,6 +135,7 @@ Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết ki
 <p id="priceBox">Price: <span id="converted_price">$50</span></p>
 <input type="hidden" id="final_price">
 <p id="formStatus"></p>
+<button type="submit" class="confirm-order-btn">Xác nhận Đơn Hàng</button>
 </form>
 <p id="paypalNotice" style="color:red;">⚠ Fill all info before payment</p>
 <div id="paypal-button-container" style="display:none;"></div>
@@ -164,12 +178,10 @@ s.forEach((e,i)=>e.style.display=i===slideIndex[type]?"block":"none");
 }
 moveSlide('video',0);
 moveSlide('image',0);
-
 // scroll
 function scrollToForm(){
 document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
 }
-
 // phone
 const iti=window.intlTelInput(document.querySelector("#phone"),{
 initialCountry:"auto",
@@ -181,11 +193,9 @@ fetch("https://ipapi.co/json")
 },
 separateDialCode:true
 });
-
 // validate
 const form=document.getElementById("orderForm");
 const paypalBox=document.getElementById("paypal-button-container");
-
 form.oninput=()=>{
 let valid=true;
 form.querySelectorAll("[required]").forEach(i=>{
@@ -193,14 +203,12 @@ if(!i.value) valid=false;
 });
 paypalBox.style.display=valid?"block":"none";
 };
-
 // Update price display when package selection changes
 document.getElementById("package").addEventListener('change', function() {
 const selectedOption = this.options[this.selectedIndex];
 document.getElementById("converted_price").innerText = `$${selectedOption.value}`;
 document.getElementById("final_price").value = selectedOption.value;
 });
-
 // paypal
 paypal.Buttons({
 createOrder:(d,a)=>{
@@ -213,6 +221,17 @@ document.getElementById("formStatus").innerHTML="✅ Payment success";
 });
 }
 }).render('#paypal-button-container');
+</script>
+<script>
+document.getElementById('orderForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Ngăn chặn việc gửi form mặc định
+
+  // Lấy dữ liệu từ form
+  const formData = new FormData(this);
+
+  // Xử lý dữ liệu (ví dụ: hiển thị thông báo, gửi lên server, v.v.)
+  alert('Đơn hàng đã được xác nhận!');
+});
 </script>
 </body>
 </html>
