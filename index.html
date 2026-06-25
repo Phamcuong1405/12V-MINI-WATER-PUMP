@@ -4,363 +4,343 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mini Pump Store</title>
+<meta name="description" content="Mua bán máy bơm mini 12V áp lực cao, phù hợp cho việc rửa xe, tưới cây và nhiều công việc DIY khác. Giao hàng miễn phí trong ngày!">
+<meta name="keywords" content="máy bơm mini, 12V pump, bơm nước, rửa xe, tưới cây, DIY, giao hàng miễn phí, mini pump store">
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f8fa;
-  margin: 0;
-  padding: 20px;
+font-family: Arial, sans-serif;
+background-color: #f7f8fa;
+margin: 0;
+padding: 20px;
 }
-
 .container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
+max-width: 1200px;
+margin: auto;
+display: flex;
+justify-content: space-between;
 }
-
 .header {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  padding: 20px;
+display: flex;
+align-items: center;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+padding: 20px;
 }
-
 .product-images {
-  width: 60%;
+width: 60%;
 }
-
 .product-info {
-  width: 40%;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  padding: 20px;
+width: 40%;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+padding: 20px;
 }
-
 .slider {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #000;
+position: relative;
+border-radius: 12px;
+overflow: hidden;
+background-color: #000;
 }
-
 .slide {
-  display: none;
+display: none;
 }
-
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
-
 .prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
-  font-size: 30px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 5px 10px;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+color: #fff;
+font-size: 30px;
+cursor: pointer;
+background-color: rgba(0, 0, 0, 0.4);
+padding: 5px 10px;
 }
-
 .prev {
-  left: 10px;
+left: 10px;
 }
-
 .next {
-  right: 10px;
+right: 10px;
 }
-
 .product-description {
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  padding: 20px;
+margin-top: 20px;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+padding: 20px;
 }
-
 .customer-info, .shipping-address, .order-details {
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  padding: 20px;
+margin-top: 20px;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+padding: 20px;
 }
-
 .form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
 }
-
 .form-grid div {
-  width: 100%;
+width: 100%;
 }
-
 .trust-box {
-  background-color: #f7f7f7;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 20px;
-  line-height: 1.6;
+background-color: #f7f7f7;
+padding: 15px;
+border-radius: 10px;
+margin-top: 20px;
+line-height: 1.6;
 }
-
 .promo {
-  background-color: #ff4d00;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 10px;
-  margin-top: 20px;
+background-color: #ff4d00;
+color: white;
+padding: 15px;
+text-align: center;
+font-weight: bold;
+font-size: 18px;
+border-radius: 10px;
+margin-top: 20px;
 }
-
 .order-btn {
-  width: 100%;
-  padding: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  background: linear-gradient(90deg, #ff6a00, #ff9500);
-  color: white;
-  box-shadow: 0 8px 20px rgba(255, 77, 0, .4);
-  animation: pulse 1.5s infinite;
+width: 100%;
+padding: 20px;
+font-size: 24px;
+font-weight: bold;
+border: none;
+border-radius: 12px;
+cursor: pointer;
+background: linear-gradient(90deg, #ff6a00, #ff9500);
+color: white;
+box-shadow: 0 8px 20px rgba(255, 77, 0, .4);
+animation: pulse 1.5s infinite;
 }
-
 .order-btn:hover {
-  transform: scale(1.05);
+transform: scale(1.05);
 }
-
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.04);
-  }
-  100% {
-    transform: scale(1);
-  }
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.04);
+}
+100% {
+transform: scale(1);
+}
 }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css"/>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "12V HIGH PRESSURE MINI PUMP",
+  "image": [
+    "https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg",
+    "https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg",
+    "https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg"
+  ],
+  "description": "Máy bơm mini 12V áp lực cao – giải pháp hoàn hảo cho mọi nhu cầu sử dụng nước tại nhà, DIY hoặc mang đi mọi nơi. Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết kiệm thời gian và công sức.",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://yourwebsite.com/12v-mini-pump",
+    "priceCurrency": "USD",
+    "price": "XX.XX",
+    "availability": "http://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Mini Pump Store"
+    }
+  }
+}
+</script>
 </head>
 <body>
-
 <div class="container">
-  <div class="header">
-    <div class="product-images">
-      <div class="slider" id="imageSlider">
-        <div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg"></div>
-        <div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg"></div>
-        <div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg"></div>
-      </div>
-      <button class="prev" onclick="moveSlide('image', -1)">❮</button>
-      <button class="next" onclick="moveSlide('image', 1)">❯</button>
-    </div>
-    <div class="product-info">
-      <h2>12V HIGH PRESSURE MINI PUMP</h2>
-      <p><span style="color:red;">⚠ Only 626 units left</span></p>
-      <p><span style="color:green;">✔ 8,989+ sold this month</span></p>
-      <div class="promo">
-        🔥 FREE SHIPPING TODAY<br>
-        ⏰ Offer Ends In 24 Hours
-      </div>
-      <h3>PRICE: $XX.XX</h3>
-      <h3>QUANTITY:</h3>
-      <input type="number" name="quantity" value="1" min="1">
-      <button class="order-btn">🔥 ORDER NOW - LIMITED STOCK</button>
-      <div class="trust-box">
-        ✅ Secure Checkout<br>
-        🚚 Worldwide Shipping<br>
-        💳 PayPal Protected<br>
-        🔄 7-Day Replacement
-      </div>
-    </div>
-  </div>
+<div class="header">
+<div class="product-images">
+<div class="slider" id="imageSlider">
+<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-1.jpg" loading="lazy"></div>
+<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may-2%20(1).jpg" loading="lazy"></div>
+<div class="slide"><img src="https://raw.githubusercontent.com/Phamcuong1405/12V-MINI-WATER-PUMP/refs/heads/main/may3.jpg" loading="lazy"></div>
 </div>
-
+<button class="prev" onclick="moveSlide('image', -1)">❮</button>
+<button class="next" onclick="moveSlide('image', 1)">❯</button>
+</div>
+<div class="product-info">
+<h2>12V HIGH PRESSURE MINI PUMP</h2>
+<p><span style="color:red;">⚠ Only 626 units left</span></p>
+<p><span style="color:green;">✔ 8,989+ sold this month</span></p>
+<div class="promo">
+🔥 FREE SHIPPING TODAY<br>
+⏰ Offer Ends In 24 Hours
+</div>
+<h3>PRICE: $XX.XX</h3>
+<h3>QUANTITY:</h3>
+<input type="number" name="quantity" value="1" min="1">
+<button class="order-btn">🔥 ORDER NOW - LIMITED STOCK</button>
+<div class="trust-box">
+✅ Secure Checkout<br>
+🚚 Worldwide Shipping<br>
+💳 PayPal Protected<br>
+🔄 7-Day Replacement
+</div>
+</div>
+</div>
+</div>
 <div class="product-description">
-  <h3>💥 Powerful Mini Pump - Small but Mighty</h3>
-  <p>
-    Máy bơm mini 12V áp lực cao – giải pháp hoàn hảo cho mọi nhu cầu sử dụng nước tại nhà, DIY hoặc mang đi mọi nơi.
-    Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết kiệm thời gian và công sức.
-  </p>
-  <h4>⚙️ Công dụng chính:</h4>
-  <ul>
-    <li>🚿 Rửa xe máy, ô tô nhanh chóng</li>
-    <li>🌱 Tưới cây, làm vườn tiện lợi</li>
-    <li>💧 Bơm nước từ bể, xô, hồ chứa</li>
-    <li>🧽 Vệ sinh sân nhà, ban công</li>
-    <li>🔧 DIY hệ thống nước mini</li>
-  </ul>
-  <h4>🔥 Ưu điểm nổi bật:</h4>
-  <ul>
-    <li>✔ Áp lực mạnh – phun xa, sạch nhanh</li>
-    <li>✔ Tiết kiệm điện – dùng nguồn 12V</li>
-    <li>✔ Nhỏ gọn – dễ mang theo</li>
-    <li>✔ Lắp đặt đơn giản</li>
-    <li>✔ Độ bền cao</li>
-  </ul>
+<h3>💥 Powerful Mini Pump - Small but Mighty</h3>
+<p>
+Máy bơm mini 12V áp lực cao – giải pháp hoàn hảo cho mọi nhu cầu sử dụng nước tại nhà, DIY hoặc mang đi mọi nơi.
+Thiết kế nhỏ gọn nhưng hiệu suất mạnh mẽ, giúp bạn tiết kiệm thời gian và công sức.
+</p>
+<h4>⚙️ Công dụng chính:</h4>
+<ul>
+<li>🚿 Rửa xe máy, ô tô nhanh chóng</li>
+<li>🌱 Tưới cây, làm vườn tiện lợi</li>
+<li>💧 Bơm nước từ bể, xô, hồ chứa</li>
+<li>🧽 Vệ sinh sân nhà, ban công</li>
+<li>🔧 DIY hệ thống nước mini</li>
+</ul>
+<h4>🔥 Ưu điểm nổi bật:</h4>
+<ul>
+<li>✔ Áp lực mạnh – phun xa, sạch nhanh</li>
+<li>✔ Tiết kiệm điện – dùng nguồn 12V</li>
+<li>✔ Nhỏ gọn – dễ mang theo</li>
+<li>✔ Lắp đặt đơn giản</li>
+<li>✔ Độ bền cao</li>
+</ul>
 </div>
-
 <div class="customer-info">
-  <h3>👤 Thông tin khách hàng</h3>
-  <form id="orderForm" action="#" method="post">
-    <div class="form-grid">
-      <div>
-        <label>Họ và tên đầy đủ *</label>
-        <input type="text" name="fullname" required>
-      </div>
-      <div>
-        <label>Email *</label>
-        <input type="email" name="email" required>
-      </div>
-    </div>
-    <div class="form-grid">
-      <div>
-        <label>Số điện thoại *</label>
-        <input id="phone" type="tel" name="phone" required>
-      </div>
-    </div>
-  </form>
+<h3>👤 Thông tin khách hàng</h3>
+<form id="orderForm" action="#" method="post">
+<div class="form-grid">
+<div>
+<label>Họ và tên đầy đủ *</label>
+<input type="text" name="fullname" required>
 </div>
-
+<div>
+<label>Email *</label>
+<input type="email" name="email" required>
+</div>
+</div>
+<div class="form-grid">
+<div>
+<label>Số điện thoại *</label>
+<input id="phone" type="tel" name="phone" required>
+</div>
+</div>
+</form>
+</div>
 <div class="shipping-address">
-  <h3>🚚 Địa chỉ giao hàng</h3>
-  <form id="orderForm" action="#" method="post">
-    <div class="form-grid">
-      <div>
-        <label>Quốc gia *</label>
-        <select name="country" required>
-          <option value="">Chọn quốc gia</option>
-          <option>Hoa Kỳ</option>
-          <option>Canada</option>
-          <option>Úc</option>
-          <option>Vương quốc Anh</option>
-          <option>Đức</option>
-          <option>Pháp</option>
-          <option>Nhật Bản</option>
-          <option>Hàn Quốc</option>
-          <option>Singapore</option>
-          <option>Malaysia</option>
-          <option>Thái Lan</option>
-          <option>Khác</option>
-        </select>
-      </div>
-      <div>
-        <label>Bang/Tỉnh</label>
-        <input type="text" name="state">
-      </div>
-    </div>
-    <div class="form-grid">
-      <div>
-        <label>Thành phố *</label>
-        <input type="text" name="city" required>
-      </div>
-      <div>
-        <label>Mã bưu chính / ZIP *</label>
-        <input type="text" name="zipcode" required>
-      </div>
-    </div>
-    <div class="form-grid">
-      <div>
-        <label>Địa chỉ đường phố *</label>
-        <input type="text" name="address1" required>
-      </div>
-      <div>
-        <label>Căn hộ/Đơn vị</label>
-        <input type="text" name="address2">
-      </div>
-    </div>
-  </form>
+<h3>🚚 Địa chỉ giao hàng</h3>
+<form id="orderForm" action="#" method="post">
+<div class="form-grid">
+<div>
+<label>Quốc gia *</label>
+<select name="country" required>
+<option value="">Chọn quốc gia</option>
+<option>Hoa Kỳ</option>
+<option>Canada</option>
+<option>Úc</option>
+<option>Vương quốc Anh</option>
+<option>Đức</option>
+<option>Pháp</option>
+<option>Nhật Bản</option>
+<option>Hàn Quốc</option>
+<option>Singapore</option>
+<option>Malaysia</option>
+<option>Thái Lan</option>
+<option>Khác</option>
+</select>
 </div>
-
+<div>
+<label>Bang/Tỉnh</label>
+<input type="text" name="state">
+</div>
+</div>
+<div class="form-grid">
+<div>
+<label>Thành phố *</label>
+<input type="text" name="city" required>
+</div>
+<div>
+<label>Mã bưu điện *</label>
+<input type="text" name="zipCode" required>
+</div>
+</div>
+<div>
+<label>Địa chỉ cụ thể *</label>
+<textarea name="address" required></textarea>
+</div>
+</form>
+</div>
 <div class="order-details">
-  <h3>📦 Chi tiết đơn hàng</h3>
-  <form id="orderForm" action="#" method="post">
-    <div class="form-grid">
-      <div>
-        <label>Số lượng</label>
-        <input type="number" name="quantity" value="1" min="1">
-      </div>
-      <div>
-        <label>Ghi chú bổ sung</label>
-        <textarea name="note"></textarea>
-      </div>
-    </div>
-  </form>
-  <button class="order-btn">🔥 ORDER NOW - LIMITED STOCK</button>
+<h3>Thông tin đơn hàng</h3>
+<table>
+<tr>
+<td><strong>Sản phẩm:</strong></td>
+<td>12V HIGH PRESSURE MINI PUMP</td>
+</tr>
+<tr>
+<td><strong>Giá:</strong></td>
+<td>$XX.XX</td>
+</tr>
+<tr>
+<td><strong>Số lượng:</strong></td>
+<td id="quantity">1</td>
+</tr>
+<tr>
+<td><strong>Tổng cộng:</strong></td>
+<td id="total">$XX.XX</td>
+</tr>
+</table>
+<button class="order-btn" onclick="submitOrder()">🔥 ĐẶT HÀNG NGAY</button>
 </div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <h3>🏪 Mini Pump Store</h3>
-  <p style="color:#bbb;">
-    Chuyên cung cấp máy bơm mini áp lực cao, tiện lợi cho gia đình và DIY.
-  </p>
-  <p>
-    📱 WhatsApp:<br>
-    <a href="https://wa.me/84886073622" target="_blank">
-      +84 886 073 622
-    </a>
-  </p>
-  <p>
-    📍 Địa chỉ:<br>
-    Ngõ 1 Tân Khai, Vĩnh Hưng<br>
-    Hoàng Mai, Hà Nội, Việt Nam
-  </p>
-  <p>
-    📧 Email:<br>
-    <a href="mailto:cuongkool1994@gmail.com" style="color:#ff9800;">
-      cuongkool1994@gmail.com
-    </a>
-  </p>
-  <p style="font-size:12px;color:#777;text-align:center;">
-    © 2026 Mini Pump Store
-  </p>
-</div>
-
 <script>
 let slideIndex = { image: 0 };
-
 function moveSlide(type, n) {
-  let slides = document.querySelectorAll(`#${type}Slider .slide`);
-  slideIndex[type] = (slideIndex[type] + n + slides.length) % slides.length;
-  slides.forEach((slide, index) => {
-    slide.style.display = index === slideIndex[type] ? 'block' : 'none';
-  });
+let slides = document.querySelectorAll(`#${type}Slider .slide`);
+slideIndex[type] = (slideIndex[type] + n + slides.length) % slides.length;
+slides.forEach((slide, index) => {
+slide.style.display = index === slideIndex[type] ? 'block' : 'none';
+});
 }
-
 moveSlide('image', 0);
 
 // phone
 const iti = window.intlTelInput(document.querySelector("#phone"), {
-  initialCountry: "auto",
-  geoIpLookup: cb => {
-    fetch("https://ipapi.co/json")
-      .then(res => res.json())
-      .then(data => cb(data.country_code))
-      .catch(() => cb("VN"));
-  },
-  separateDialCode: true
+initialCountry: "auto",
+geoIpLookup: cb => {
+fetch("https://ipapi.co/json")
+.then(res => res.json())
+.then(data => cb(data.country_code))
+.catch(() => cb("VN"));
+},
+separateDialCode: true
 });
 
-// form submission
-document.getElementById('orderForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+// Update order details on quantity change
+document.querySelector('input[name="quantity"]').addEventListener('change', function() {
+const quantity = this.value;
+document.getElementById('quantity').textContent = quantity;
+document.getElementById('total').textContent = `$${(XX.XX * quantity).toFixed(2)}`;
+});
+
+function submitOrder() {
+const form = document.getElementById('orderForm');
+if (form.checkValidity()) {
   alert("Thank you! Your order has been received. We will contact you shortly.");
-});
+} else {
+  alert("Please fill out all required fields.");
+}
+}
 </script>
-
 </body>
 </html>
